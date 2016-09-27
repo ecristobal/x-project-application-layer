@@ -6,6 +6,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<modules>
+		<module>rest-endpoints</module>
+		<module>request-builder</module>
+		<module>response-builder</module>
+		<module>preactions</module>
+		<module>postactions</module>
+		<module>application-service</module>
+		<module>business-delegate</module>
+	</modules>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -219,6 +229,7 @@
 				<version>3.5.1</version>
 				<configuration>
 					<compilerVersion>1.8</compilerVersion>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -250,7 +261,7 @@
 						</goals>
 						<phase>install</phase>
 						<configuration>
-							<keystore>/Users/esteban/claves</keystore>
+							<keystore>/Users/esteban/claves/keystore.jks</keystore>
 							<alias>ecrert</alias>
 							<storepass>Tamamico7251</storepass>
 							<keypass>Tamamico7251</keypass>
@@ -258,16 +269,16 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>3.2.0</version>
+				<extensions>true</extensions>
+			</plugin>
 		</plugins>
-		
+
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>3.2.0</version>
-					<extensions>true</extensions>
-				</plugin>
 				<plugin>
 					<groupId>com.spotify</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
@@ -276,5 +287,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 </project>
