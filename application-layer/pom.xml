@@ -24,6 +24,9 @@
 		<spring.version>4.3.3.RELEASE</spring.version>
 		<cxf.version>3.1.7</cxf.version>
 		<eclipselink.version>2.6.4</eclipselink.version>
+		<sonar.projectKey>${project.artifactId}</sonar.projectKey>
+		<sonar.projectVersion>${project.version}</sonar.projectVersion>
+		<sonar.sources>src/main/java/**</sonar.sources>
 	</properties>
 
 	<repositories>
