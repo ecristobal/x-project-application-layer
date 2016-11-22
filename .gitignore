@@ -3,3 +3,5 @@ target/
 .classpath
 .project
 .springBeans
+release.properties
+pom.xml.releaseBackup
