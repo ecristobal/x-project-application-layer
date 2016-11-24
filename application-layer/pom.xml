@@ -26,8 +26,6 @@
 		<eclipselink.version>2.6.4</eclipselink.version>
 		<!-- SonarQube configuration properties -->
 		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>
-		<sonar.language>java</sonar.language>
 	</properties>
 
 	<scm>
