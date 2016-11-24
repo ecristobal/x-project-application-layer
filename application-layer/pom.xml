@@ -24,6 +24,8 @@
 		<spring.version>4.3.3.RELEASE</spring.version>
 		<cxf.version>3.1.7</cxf.version>
 		<eclipselink.version>2.6.4</eclipselink.version>
+		<!-- Sonar configuration -->
+		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
 
 	<scm>
@@ -224,7 +226,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<profiles>
 		<profile>
 			<id>jenkins</id>
@@ -306,6 +308,14 @@
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.7.201606060606</version>
+				<configuration>
+					<append>true</append>
+				</configuration>
 			</plugin>
 		</plugins>
 
