@@ -24,6 +24,8 @@
 		<spring.version>4.3.3.RELEASE</spring.version>
 		<cxf.version>3.1.7</cxf.version>
 		<eclipselink.version>2.6.4</eclipselink.version>
+		<!-- SonarQube configuration properties -->
+		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
 
 	<scm>
@@ -314,6 +316,27 @@
 				<configuration>
 					<append>true</append>
 				</configuration>
+				<executions>
+					<execution>
+						<id>agent-for-ut</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>agent-for-it</id>
+						<goals>
+							<goal>prepare-agent-integration</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 
