@@ -14,6 +14,7 @@
 		<module>postactions</module>
 		<module>application-service</module>
 		<module>business-delegate</module>
+		<module>authentication-manager</module>
 	</modules>
 
 	<properties>
@@ -199,7 +200,12 @@
 				<artifactId>cxf-rt-transports-http</artifactId>
 				<version>${cxf.version}</version>
 			</dependency>
-			<!-- EclipseLink dependencies -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-rs-security-oauth2</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<!-- JPA dependencies -->
 			<dependency>
 				<groupId>org.eclipse.persistence</groupId>
 				<artifactId>org.eclipse.persistence.jpa</artifactId>
@@ -210,6 +216,11 @@
 				<groupId>org.jboss.spec.javax.servlet</groupId>
 				<artifactId>jboss-servlet-api_3.1_spec</artifactId>
 				<version>1.0.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>javax.transaction-api</artifactId>
+				<version>1.2</version>
 			</dependency>
 			<!-- Test dependencies -->
 			<dependency>

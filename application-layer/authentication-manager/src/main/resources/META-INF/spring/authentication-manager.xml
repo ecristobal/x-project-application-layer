@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<jaxrs:server id="oauthServer" address="/authentication">
+		<jaxrs:serviceBeans>
+			<ref bean="accessTokenService" />
+			<ref bean="accessTokenValidateService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<bean id="accessTokenService"
+		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
+		<property name="dataProvider" ref="oauthProvider" />
+	</bean>
+	<bean id="accessTokenValidateService"
+		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenValidatorService">
+		<property name="dataProvider" ref="oauthProvider" />
+	</bean>
+
+	<bean id="oauthProvider"
+		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
+		<property name="entityManager" ref="entityManager" />
+	</bean>
+
+	<bean id="entityManager"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>
