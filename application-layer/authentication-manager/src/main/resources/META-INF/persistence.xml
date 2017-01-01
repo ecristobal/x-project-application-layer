@@ -7,17 +7,17 @@
 		transaction-type="JTA">
 		<class>org.apache.cxf.rs.security.oauth2.common.Client</class>
 		<class>org.apache.cxf.rs.security.oauth2.common.UserSubject</class>
-		<class>org.apache.cxf.rs.security.oauth2.grants.code.ServerAuthorizationCodeGrant</class>
-		<class>org.apache.cxf.rs.security.oauth2.grants.code.AuthorizationCodeGrant</class>
-		<class>org.apache.cxf.rs.security.oauth2.tokens.bearer.BearerAccessToken</class>
 		<class>org.apache.cxf.rs.security.oauth2.common.ServerAccessToken</class>
 		<class>org.apache.cxf.rs.security.oauth2.common.AccessToken</class>
 		<class>org.apache.cxf.rs.security.oauth2.common.OAuthPermission</class>
+		<class>org.apache.cxf.rs.security.oauth2.grants.code.ServerAuthorizationCodeGrant</class>
+		<class>org.apache.cxf.rs.security.oauth2.grants.code.AuthorizationCodeGrant</class>
+		<class>org.apache.cxf.rs.security.oauth2.tokens.bearer.BearerAccessToken</class>
 		<class>org.apache.cxf.rs.security.oauth2.tokens.refresh.RefreshToken</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="eclipselink.target-database" value="MySQL" />
-			<property name="eclipselink.ddl-generation" value="create-tables"/>
+			<property name="eclipselink.ddl-generation" value="create-tables" />
 		</properties>
 	</persistence-unit>
 
