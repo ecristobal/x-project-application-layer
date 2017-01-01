@@ -90,6 +90,7 @@
 						<Import-Package>
 							javax.sql,
 							org.apache.cxf.rs.security.oauth2.common,
+							org.apache.cxf.rs.security.oauth2.filters,
 							org.apache.cxf.rs.security.oauth2.grants.code,
 							org.apache.cxf.rs.security.oauth2.services,
 							org.apache.cxf.rs.security.oauth2.provider,

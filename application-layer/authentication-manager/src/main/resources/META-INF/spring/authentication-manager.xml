@@ -13,12 +13,14 @@
 			<ref bean="tokenRevocationService" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
-			<ref bean="jsonProvider" />
+			<ref bean="oauthFilter" />
 		</jaxrs:providers>
 	</jaxrs:server>
 
-	<bean id="jsonProvider"
-		class="org.apache.cxf.rs.security.oauth2.provider.OAuthJSONProvider" />
+	<bean id="oauthFilter"
+		class="org.apache.cxf.rs.security.oauth2.filters.OAuthRequestFilter">
+		<property name="dataProvider" ref="oauthProvider" />
+	</bean>
 
 	<bean id="accessTokenService"
 		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
