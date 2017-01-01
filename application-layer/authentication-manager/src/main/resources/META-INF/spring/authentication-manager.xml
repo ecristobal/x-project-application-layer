@@ -10,6 +10,7 @@
 		<jaxrs:serviceBeans>
 			<ref bean="accessTokenService" />
 			<ref bean="accessTokenValidateService" />
+			<ref bean="tokenRevocationService" />
 			<ref bean="oauth2Service" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
@@ -27,6 +28,11 @@
 
 	<bean id="accessTokenValidateService"
 		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenValidatorService">
+		<property name="dataProvider" ref="oauthProvider" />
+	</bean>
+
+	<bean id="tokenRevocationService"
+		class="org.apache.cxf.rs.security.oauth2.services.TokenRevocationService">
 		<property name="dataProvider" ref="oauthProvider" />
 	</bean>
 
@@ -51,7 +57,11 @@
 	</bean>
 
 	<bean id="oauthProvider"
-		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider" />
+		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
+		<property name="accessTokenLifetime" value="300000" />
+		<property name="refreshTokenLifetime" value="300000" />
+		<property name="recycleRefreshTokens" value="false" />
+	</bean>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
