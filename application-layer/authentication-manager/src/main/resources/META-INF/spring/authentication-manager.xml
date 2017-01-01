@@ -24,10 +24,10 @@
 
 	<bean id="oauthProvider"
 		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
-		<property name="entityManager" ref="entityManager" />
+		<property name="entityManager" ref="#{entityManagerFactory.createEntityManager()}" />
 	</bean>
 
-	<bean id="entityManager"
+	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
