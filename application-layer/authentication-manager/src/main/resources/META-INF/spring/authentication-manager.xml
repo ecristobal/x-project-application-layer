@@ -11,7 +11,6 @@
 			<ref bean="accessTokenService" />
 			<ref bean="accessTokenValidateService" />
 			<ref bean="tokenRevocationService" />
-			<ref bean="oauth2Service" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jsonProvider" />
@@ -33,26 +32,6 @@
 
 	<bean id="tokenRevocationService"
 		class="org.apache.cxf.rs.security.oauth2.services.TokenRevocationService">
-		<property name="dataProvider" ref="oauthProvider" />
-	</bean>
-
-	<bean id="oauth2Service"
-		class="org.apache.cxf.rs.security.oauth2.services.AuthorizationService">
-		<property name="services">
-			<list>
-				<ref bean="authorizationService" />
-				<ref bean="implicitService" />
-			</list>
-		</property>
-	</bean>
-
-	<bean id="authorizationService"
-		class="org.apache.cxf.rs.security.oauth2.services.AuthorizationCodeGrantService">
-		<property name="dataProvider" ref="oauthProvider" />
-	</bean>
-
-	<bean id="implicitService"
-		class="org.apache.cxf.rs.security.oauth2.services.ImplicitGrantService">
 		<property name="dataProvider" ref="oauthProvider" />
 	</bean>
 
