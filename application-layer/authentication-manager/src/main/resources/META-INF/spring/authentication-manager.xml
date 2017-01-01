@@ -23,15 +23,14 @@
 	</bean>
 
 	<bean id="oauthProvider"
-		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
-		<property name="entityManager" ref="#{entityManagerFactory.createEntityManager()}" />
-	</bean>
+		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider" />
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 		<property name="jpaDialect" ref="jpaDialect" />
+		<property name="jpaProperties" ref="jpaProperties" />
 	</bean>
 
 	<tx:annotation-driven transaction-manager="transactionManager" />

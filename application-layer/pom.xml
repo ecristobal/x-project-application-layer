@@ -25,7 +25,8 @@
 		<log4j.version>2.6.2</log4j.version>
 		<spring.version>4.3.5.RELEASE</spring.version>
 		<cxf.version>3.1.7</cxf.version>
-		<eclipselink.version>2.6.4</eclipselink.version>
+		<hibernate.version>5.2.6.Final</hibernate.version>
+		<jboss.version>1.0.1.Final</jboss.version>
 		<!-- SonarQube configuration properties -->
 		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
@@ -213,21 +214,21 @@
 			</dependency>
 			<!-- JPA dependencies -->
 			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>org.eclipse.persistence.jpa</artifactId>
-				<version>${eclipselink.version}</version>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
 			</dependency>
 			<!-- Provided dependencies -->
 			<dependency>
 				<groupId>org.jboss.spec.javax.servlet</groupId>
-				<artifactId>jboss-servlet-api_3.1_spec</artifactId>
-				<version>1.0.0.Final</version>
+				<artifactId>jboss-servlet-api_3.0_spec</artifactId>
+				<version>${jboss.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>javax.transaction</groupId>
-				<artifactId>javax.transaction-api</artifactId>
-				<version>1.2</version>
+				<groupId>org.jboss.spec.javax.transaction</groupId>
+				<artifactId>jboss-transaction-api_1.2_spec</artifactId>
+				<version>${jboss.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<!-- Test dependencies -->
