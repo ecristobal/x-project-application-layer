@@ -22,7 +22,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<slf4j.version>1.7.21</slf4j.version>
 		<log4j.version>2.6.2</log4j.version>
-		<spring.version>4.3.3.RELEASE</spring.version>
+		<spring.version>4.3.5.RELEASE</spring.version>
 		<cxf.version>3.1.7</cxf.version>
 		<eclipselink.version>2.6.4</eclipselink.version>
 		<!-- SonarQube configuration properties -->
@@ -203,6 +203,11 @@
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-rs-security-oauth2</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-rs-security-sso-oidc</artifactId>
 				<version>${cxf.version}</version>
 			</dependency>
 			<!-- JPA dependencies -->
