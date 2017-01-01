@@ -10,15 +10,43 @@
 		<jaxrs:serviceBeans>
 			<ref bean="accessTokenService" />
 			<ref bean="accessTokenValidateService" />
+			<ref bean="oauth2Service" />
 		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
 	</jaxrs:server>
+
+	<bean id="jsonProvider"
+		class="org.apache.cxf.rs.security.oauth2.provider.OAuthJSONProvider" />
 
 	<bean id="accessTokenService"
 		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
 		<property name="dataProvider" ref="oauthProvider" />
 	</bean>
+
 	<bean id="accessTokenValidateService"
 		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenValidatorService">
+		<property name="dataProvider" ref="oauthProvider" />
+	</bean>
+
+	<bean id="oauth2Service"
+		class="org.apache.cxf.rs.security.oauth2.services.AuthorizationService">
+		<property name="services">
+			<list>
+				<ref bean="authorizationService" />
+				<ref bean="implicitService" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="authorizationService"
+		class="org.apache.cxf.rs.security.oauth2.services.AuthorizationCodeGrantService">
+		<property name="dataProvider" ref="oauthProvider" />
+	</bean>
+
+	<bean id="implicitService"
+		class="org.apache.cxf.rs.security.oauth2.services.ImplicitGrantService">
 		<property name="dataProvider" ref="oauthProvider" />
 	</bean>
 
