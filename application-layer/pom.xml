@@ -15,6 +15,7 @@
 		<module>application-service</module>
 		<module>business-delegate</module>
 		<module>authentication-manager</module>
+		<module>logging-configuration</module>
 	</modules>
 
 	<properties>
