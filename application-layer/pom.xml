@@ -16,6 +16,7 @@
 		<module>business-delegate</module>
 		<module>authentication-manager</module>
 		<module>logging-configuration</module>
+		<module>packager</module>
 	</modules>
 
 	<properties>
@@ -217,6 +218,20 @@
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
 				<version>${hibernate.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.geronimo.specs</groupId>
+						<artifactId>geronimo-jta_1.1_spec</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.enterprise</groupId>
+						<artifactId>cdi-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.jboss</groupId>
+						<artifactId>jandex</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<!-- Provided dependencies -->
 			<dependency>
@@ -353,6 +368,12 @@
 					<groupId>com.spotify</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.4.13</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.karaf.tooling</groupId>
+					<artifactId>karaf-maven-plugin</artifactId>
+					<version>4.0.0</version>
+					<extensions>true</extensions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
