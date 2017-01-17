@@ -7,6 +7,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/META-INF/spring/authentication-manager.xml",
+		"classpath:/META-INF/spring/authentication-manager-infrastructure.xml",
 		"classpath:/spring/authentication-manager-test.xml" })
 public class ApplicationManagerTest {
 

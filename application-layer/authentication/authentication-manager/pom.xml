@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.project.x</groupId>
-		<artifactId>application-layer</artifactId>
+		<artifactId>authentication</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>authentication-manager</artifactId>
@@ -47,12 +47,25 @@
 			<artifactId>hibernate-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.jboss.spec.javax.servlet</groupId>
-			<artifactId>jboss-servlet-api_3.0_spec</artifactId>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.jboss.spec.javax.transaction</groupId>
-			<artifactId>jboss-transaction-api_1.2_spec</artifactId>
+			<groupId>javax.transaction</groupId>
+			<artifactId>javax.transaction-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-jta</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+		</dependency>
+		<!-- Testing dependencies -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -62,7 +75,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -88,7 +100,8 @@
 				<configuration>
 					<instructions>
 						<Import-Package>
-							javax.sql,
+							com.atomikos.icatch.jta,
+							org.apache.commons.dbcp2.managed,
 							org.apache.cxf.rs.security.oauth2.common,
 							org.apache.cxf.rs.security.oauth2.filters,
 							org.apache.cxf.rs.security.oauth2.grants.code,
@@ -96,6 +109,7 @@
 							org.apache.cxf.rs.security.oauth2.provider,
 							org.apache.cxf.rs.security.oauth2.tokens.bearer,
 							org.apache.cxf.rs.security.oauth2.tokens.refresh,
+							org.springframework.beans.factory.config,
 							org.springframework.orm.jpa,
 							org.springframework.orm.jpa.vendor,
 							org.springframework.transaction.annotation,
