@@ -320,7 +320,7 @@
 						<goals>
 							<goal>aggregate</goal>
 						</goals>
-						<phase>install</phase>
+						<phase>site</phase>
 					</execution>
 				</executions>
 				<configuration>
