@@ -16,7 +16,6 @@
 		<module>business-delegate</module>
 		<module>authentication</module>
 		<module>logging-configuration</module>
-		<module>packager</module>
 	</modules>
 
 	<properties>
@@ -389,12 +388,6 @@
 					<groupId>com.spotify</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.4.13</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.karaf.tooling</groupId>
-					<artifactId>karaf-maven-plugin</artifactId>
-					<version>4.0.0</version>
-					<extensions>true</extensions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
