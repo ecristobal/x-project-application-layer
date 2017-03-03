@@ -7,5 +7,4 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>business-delegate</artifactId>
-	<packaging>bundle</packaging>
 </project>

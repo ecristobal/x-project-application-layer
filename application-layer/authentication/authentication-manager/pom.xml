@@ -7,7 +7,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>authentication-manager</artifactId>
-	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>
@@ -88,32 +87,4 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Import-Package>
-							com.atomikos.icatch.jta,
-							org.apache.commons.dbcp2.managed,
-							org.apache.cxf.rs.security.oauth2.common,
-							org.apache.cxf.rs.security.oauth2.filters,
-							org.apache.cxf.rs.security.oauth2.grants.code,
-							org.apache.cxf.rs.security.oauth2.services,
-							org.apache.cxf.rs.security.oauth2.provider,
-							org.apache.cxf.rs.security.oauth2.tokens.bearer,
-							org.apache.cxf.rs.security.oauth2.tokens.refresh,
-							org.springframework.beans.factory.config,
-							org.springframework.orm.jpa,
-							org.springframework.orm.jpa.vendor,
-							org.springframework.transaction.annotation,
-							org.springframework.transaction.jta
-						</Import-Package>
-					</instructions>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
