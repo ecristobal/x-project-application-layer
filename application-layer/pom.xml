@@ -14,7 +14,7 @@
         <module>postactions</module>
         <module>application-service</module>
         <module>business-delegate</module>
-        <module>authentication</module>
+        <module>authentication-manager</module>
         <module>logging-configuration</module>
     </modules>
 
@@ -165,12 +165,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- Spring boot dependencies -->
-            <parent>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>${spring.boot.version}</version>
-            </parent>
             <!-- Apache CXF dependencies -->
             <dependency>
                 <groupId>org.apache.cxf</groupId>
