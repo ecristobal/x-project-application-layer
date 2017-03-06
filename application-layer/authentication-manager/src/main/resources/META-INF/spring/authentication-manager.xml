@@ -7,42 +7,34 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-	<jaxrs:server id="oauthServer" address="/authentication">
+	<jaxrs:server id="oauthServer" address="/oauth">
 		<jaxrs:serviceBeans>
 			<ref bean="accessTokenService" />
-			<ref bean="accessTokenValidateService" />
-			<ref bean="tokenRevocationService" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
-			<ref bean="oauthFilter" />
+			<ref bean="oauthJsonProvider" />
 		</jaxrs:providers>
 	</jaxrs:server>
 
-	<bean id="oauthFilter"
-		class="org.apache.cxf.rs.security.oauth2.filters.OAuthRequestFilter">
-		<property name="dataProvider" ref="oauthProvider" />
-	</bean>
+	<bean id="oauthJsonProvider"
+		class="org.apache.cxf.rs.security.oauth2.provider.OAuthJSONProvider" />
 
 	<bean id="accessTokenService"
 		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
-		<property name="dataProvider" ref="oauthProvider" />
+		<property name="dataProvider" ref="oauthDataProvider" />
+		<property name="grantHandler">
+			<bean
+				class="org.apache.cxf.rs.security.oauth2.grants.clientcred.ClientCredentialsGrantHandler">
+				<property name="dataProvider" ref="oauthDataProvider" />
+			</bean>
+		</property>
 	</bean>
 
-	<bean id="accessTokenValidateService"
-		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenValidatorService">
-		<property name="dataProvider" ref="oauthProvider" />
-	</bean>
-
-	<bean id="tokenRevocationService"
-		class="org.apache.cxf.rs.security.oauth2.services.TokenRevocationService">
-		<property name="dataProvider" ref="oauthProvider" />
-	</bean>
-
-	<bean id="oauthProvider"
+	<bean id="oauthDataProvider"
 		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
-		<property name="accessTokenLifetime" value="300000" />
-		<property name="refreshTokenLifetime" value="300000" />
+		<property name="accessTokenLifetime" value="300" />
 		<property name="recycleRefreshTokens" value="false" />
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
 </beans>
