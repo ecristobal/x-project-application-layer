@@ -9,11 +9,10 @@
 	<artifactId>service-registry</artifactId>
 
 	<dependencies>
-		<!-- Logging dependencies -->
+		<!-- Apache Kafka dependencies -->
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>logging-configuration</artifactId>
-			<version>${project.version}</version>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
 		</dependency>
 		<!-- Spring boot dependencies -->
 		<dependency>

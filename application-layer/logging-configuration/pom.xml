@@ -8,4 +8,11 @@
 	</parent>
 	<artifactId>logging-configuration</artifactId>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+		</dependency>
+	</dependencies>
+
 </project>

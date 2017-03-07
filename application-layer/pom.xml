@@ -344,6 +344,12 @@
 				<artifactId>jersey-servlet</artifactId>
 				<version>1.19.3</version>
 			</dependency>
+			<!-- Apache Kafka dependencies -->
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka-clients</artifactId>
+				<version>0.10.2.0</version>
+			</dependency>
 			<!-- Test dependencies -->
 			<dependency>
 				<groupId>org.springframework</groupId>
