@@ -2,7 +2,7 @@ package com.x.project.application.layer.authentication.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ImportResource;
  * @author Esteban Cristóbal
  */
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableEurekaClient
 @ImportResource("classpath:/META-INF/spring/authentication-manager*.xml")
 public class AuthenticationManagerApplication {
 
