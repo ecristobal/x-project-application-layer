@@ -9,6 +9,6 @@
 	<artifactId>postactions</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>postactions-manager</module>
+		<module>postactions-api</module>
 	</modules>
 </project>

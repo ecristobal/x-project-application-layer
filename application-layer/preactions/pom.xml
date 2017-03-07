@@ -9,6 +9,6 @@
 	<artifactId>preactions</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>preactions-manager</module>
+		<module>preactions-api</module>
 	</modules>
 </project>
