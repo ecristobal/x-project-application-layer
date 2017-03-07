@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -12,14 +13,15 @@ import org.springframework.context.annotation.ImportResource;
  * @author Esteban Cristóbal
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 @ImportResource("classpath:/META-INF/spring/authentication-manager*.xml")
-public class AuthenticationManagerLauncher {
-    
-    private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationManagerLauncher.class);
+public class AuthenticationManagerApplication {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationManagerApplication.class);
 
     public static void main(String[] args) {
         LOGGER.debug("Starting authentication app");
-        SpringApplication.run(AuthenticationManagerLauncher.class, args);
+        SpringApplication.run(AuthenticationManagerApplication.class, args);
         LOGGER.debug("Stopping authentication app");
     }
 

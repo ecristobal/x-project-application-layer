@@ -16,6 +16,7 @@
 		<module>business-delegate</module>
 		<module>authentication-manager</module>
 		<module>logging-configuration</module>
+		<module>service-registry</module>
 	</modules>
 
 	<properties>
@@ -27,7 +28,7 @@
 		<spring.boot.version>1.4.4.RELEASE</spring.boot.version>
 		<cxf.version>3.1.10</cxf.version>
 		<hibernate.version>5.2.6.Final</hibernate.version>
-		<eureka.version>1.1.16</eureka.version>
+		<eureka.version>1.2.5.RELEASE</eureka.version>
 		<!-- SonarQube configuration properties -->
 		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
@@ -216,6 +217,17 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			<!-- Eureka dependencies -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-eureka</artifactId>
+				<version>${eureka.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-eureka-server</artifactId>
+				<version>${eureka.version}</version>
+			</dependency>
 			<!-- Apache CXF dependencies -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
@@ -326,17 +338,17 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- Eureka dependencies -->
-			<dependency>
-				<groupId>com.netflix.eureka</groupId>
-				<artifactId>eureka-client</artifactId>
-				<version>1.1.16</version>
-			</dependency>
 			<!-- Servlet dependencies -->
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>3.1.0</version>
+			</dependency>
+			<!-- Jersey dependencies -->
+			<dependency>
+				<groupId>com.sun.jersey</groupId>
+				<artifactId>jersey-servlet</artifactId>
+				<version>1.19.3</version>
 			</dependency>
 			<!-- Test dependencies -->
 			<dependency>
