@@ -7,7 +7,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>rest-endpoints</module>
 		<module>request-builder</module>
 		<module>response-builder</module>
 		<module>preactions</module>
