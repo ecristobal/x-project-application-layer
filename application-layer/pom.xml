@@ -99,12 +99,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- Logging dependencies -->
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-api</artifactId>
-				<version>${log4j.version}</version>
-			</dependency>
 			<!-- Spring dependencies -->
 			<dependency>
 				<groupId>org.springframework</groupId>
