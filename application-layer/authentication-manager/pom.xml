@@ -112,6 +112,11 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<!-- Eureka dependencies -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
 		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>com.h2database</groupId>
