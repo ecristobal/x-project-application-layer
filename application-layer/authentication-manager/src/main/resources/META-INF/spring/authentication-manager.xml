@@ -14,7 +14,12 @@
 		<jaxrs:providers>
 			<ref bean="oauthJsonProvider" />
 		</jaxrs:providers>
+		<jaxrs:features>
+			<ref bean="swaggerFeature" />
+		</jaxrs:features>
 	</jaxrs:server>
+
+	<bean id="swaggerFeature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature" />
 
 	<bean id="oauthJsonProvider"
 		class="org.apache.cxf.rs.security.oauth2.provider.OAuthJSONProvider" />
