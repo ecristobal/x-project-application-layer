@@ -133,24 +133,6 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<baseImage>openjdk:8u121</baseImage>
-					<volumes>
-						<volume>/tmp</volume>
-					</volumes>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-					<runs>
-						<run>sh -c 'touch /${project.build.finalName}.jar'</run>
-					</runs>
-					<entryPoint>[ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /${project.build.finalName}.jar" ]</entryPoint>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
