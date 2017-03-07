@@ -8,4 +8,7 @@
 	</parent>
 	<artifactId>preactions</artifactId>
 	<packaging>pom</packaging>
+	<modules>
+		<module>preactions-manager</module>
+	</modules>
 </project>
