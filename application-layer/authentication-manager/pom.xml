@@ -139,9 +139,6 @@
 					<volumes>
 						<volume>/tmp</volume>
 					</volumes>
-					<runs>
-						<run>sh -c 'touch /app.jar'</run>
-					</runs>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -149,12 +146,10 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
-					<env>
-						<JAVA_OPTS></JAVA_OPTS>
-					</env>
-					<entryPoint>[ "sh", "-c", "java $JAVA_OPTS
-						-Djava.security.egd=file:/dev/./urandom -jar
-						/${project.build.finalName}.jar" ]</entryPoint>
+					<runs>
+						<run>sh -c 'touch /${project.build.finalName}.jar'</run>
+					</runs>
+					<entryPoint>[ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /${project.build.finalName}.jar" ]</entryPoint>
 				</configuration>
 			</plugin>
 		</plugins>
