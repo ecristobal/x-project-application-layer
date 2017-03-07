@@ -466,6 +466,7 @@
 					<configuration>
 						<imageName>http://52.57.20.226:8082/repository/own-images/${docker.image.prefix}/${project.artifactId}</imageName>
 						<baseImage>http://52.57.20.226:8082/repository/proxy-central/openjdk:8u121</baseImage>
+						<pushImage>true</pushImage>
 						<volumes>
 							<volume>/tmp</volume>
 						</volumes>
