@@ -13,8 +13,12 @@
 		<property name="password" value="authenticator" />
 	</bean>
 
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="database" value="MYSQL" />
+	</bean>
+
 	<util:properties id="databaseProperties">
-		<prop key="datasourceType">MYSQL</prop>
 		<prop key="hbm2ddl">validate</prop>
 	</util:properties>
 

@@ -10,9 +10,13 @@
 		<property name="user" value="sa" />
 		<property name="password" value="sa" />
 	</bean>
+	
+	<bean id="jpaVendorAdapter"
+        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="database" value="H2" />
+    </bean>
 
 	<util:properties id="databaseProperties">
-		<prop key="datasourceType">H2</prop>
 		<prop key="hbm2ddl">create</prop>
 	</util:properties>
 	

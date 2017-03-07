@@ -20,19 +20,11 @@
 				<property name="transactionManager" ref="atomikosTransactionManager" />
 			</bean>
 		</property>
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="database" value="${datasourceType}" />
-			</bean>
-		</property>
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 		<property name="jpaDialect">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 		</property>
-		<property name="jpaProperties">
-			<util:properties>
-				<prop key="hibernate.hbm2ddl.auto">${hbm2ddl}</prop>
-			</util:properties>
-		</property>
+		<property name="jpaProperties" ref="databaseProperties" />
 	</bean>
 
 	<bean id="transactionManager"
