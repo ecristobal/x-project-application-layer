@@ -5,9 +5,13 @@ import com.x.project.application.layer.preactions.api.exception.PreactionExcepti
 /**
  * Interface to be implemented by all preactions on application layer.
  * 
+ * This interface intends to be the <i>HandlerBase</i> of
+ * <a href="http://www.blackwasp.co.uk/ChainOfResponsibility.aspx">Chain of
+ * Responsibility</a> design pattern.
+ * 
  * @author Esteban Cristóbal
  */
-public interface Preaction {
+public interface PreactionHandler {
 
     /**
      * Entry method for every preaction.
@@ -17,6 +21,6 @@ public interface Preaction {
      * @throws PreactionException
      *             in case of problems with preaction execution
      */
-    void execute(final PreactionContext preactionContext) throws PreactionException;
+    void handle(final PreactionContext preactionContext) throws PreactionException;
 
 }
