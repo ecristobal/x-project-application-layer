@@ -3,7 +3,7 @@ package com.x.project.application.layer.postactions.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.x.project.application.layer.domain.vo.parameter.AbstractParameterVo;
+import com.x.project.application.layer.domain.vo.parameter.ApiMapper;
 
 /**
  * Class that stores the context for the postactions.
@@ -14,7 +14,7 @@ public class PostactionContext {
 
     private String requestId;
 
-    private List<AbstractParameterVo> outputParameters;
+    private List<ApiMapper> outputParameters;
 
     /**
      * Class constructor.
@@ -23,7 +23,7 @@ public class PostactionContext {
      *            request ID associated with this context
      */
     public PostactionContext(final String requestId) {
-        this.outputParameters = new ArrayList<AbstractParameterVo>();
+        this.outputParameters = new ArrayList<ApiMapper>();
         this.requestId = requestId;
     }
 
@@ -37,7 +37,7 @@ public class PostactionContext {
     /**
      * @return output parameter {@link List}
      */
-    public List<AbstractParameterVo> getOutputParameters() {
+    public List<ApiMapper> getOutputParameters() {
         return outputParameters;
     }
 

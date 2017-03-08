@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.x.project.application.layer.domain.vo.parameter.AbstractParameterVo;
+import com.x.project.application.layer.domain.vo.parameter.ApiMapper;
 
 /**
  * Class that stores the context for the preactions.
@@ -15,7 +15,7 @@ public class PreactionContext {
 
     private String requestId;
 
-    private List<AbstractParameterVo> inputParameters;
+    private List<ApiMapper> inputParameters;
 
     /**
      * Class constructor.
@@ -24,7 +24,7 @@ public class PreactionContext {
      *            request ID associated with this context
      */
     public PreactionContext(final String requestId) {
-        this.inputParameters = new ArrayList<AbstractParameterVo>();
+        this.inputParameters = new ArrayList<ApiMapper>();
         this.requestId = requestId;
     }
 
@@ -38,7 +38,7 @@ public class PreactionContext {
     /**
      * @return input parameter {@link Map}
      */
-    public List<AbstractParameterVo> getInputParameters() {
+    public List<ApiMapper> getInputParameters() {
         return inputParameters;
     }
 
