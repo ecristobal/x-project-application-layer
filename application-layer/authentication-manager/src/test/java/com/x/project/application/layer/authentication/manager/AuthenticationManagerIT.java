@@ -14,7 +14,7 @@ import org.springframework.boot.json.JacksonJsonParser;
 
 public class AuthenticationManagerIT {
 
-    private static final String AUTHENTICATION_URL = "http://localhost:8080/services/oauth";
+    private static final String AUTHENTICATION_URL = "http://localhost:8081/services/oauth";
 
     private TokenGenerator tokenGenerator;
 
