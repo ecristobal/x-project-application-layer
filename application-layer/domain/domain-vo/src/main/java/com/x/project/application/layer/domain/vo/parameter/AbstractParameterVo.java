@@ -26,6 +26,9 @@ public abstract class AbstractParameterVo {
         return name;
     }
 
+    /**
+     * @return parameter value
+     */
     public abstract Object getValue();
 
     /*

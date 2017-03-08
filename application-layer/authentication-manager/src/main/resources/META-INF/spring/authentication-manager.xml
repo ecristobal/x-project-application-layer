@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-	<jaxrs:server id="oauthServer" address="/oauth">
-		<jaxrs:serviceBeans>
-			<ref bean="accessTokenService" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="oauthJsonProvider" />
-		</jaxrs:providers>
-		<jaxrs:features>
-			<ref bean="swaggerFeature" />
-		</jaxrs:features>
-	</jaxrs:server>
+    <jaxrs:server id="oauthServer" address="/oauth">
+        <jaxrs:serviceBeans>
+            <ref bean="accessTokenService" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="oauthJsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:features>
+            <ref bean="swaggerFeature" />
+        </jaxrs:features>
+    </jaxrs:server>
 
-	<bean id="swaggerFeature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature" />
+    <bean id="swaggerFeature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature" />
 
-	<bean id="oauthJsonProvider"
-		class="org.apache.cxf.rs.security.oauth2.provider.OAuthJSONProvider" />
+    <bean id="oauthJsonProvider"
+        class="org.apache.cxf.rs.security.oauth2.provider.OAuthJSONProvider" />
 
-	<bean id="accessTokenService"
-		class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
-		<property name="dataProvider" ref="oauthDataProvider" />
-		<property name="grantHandler">
-			<bean
-				class="org.apache.cxf.rs.security.oauth2.grants.clientcred.ClientCredentialsGrantHandler">
-				<property name="dataProvider" ref="oauthDataProvider" />
-			</bean>
-		</property>
-	</bean>
+    <bean id="accessTokenService"
+        class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
+        <property name="dataProvider" ref="oauthDataProvider" />
+        <property name="grantHandler">
+            <bean
+                class="org.apache.cxf.rs.security.oauth2.grants.clientcred.ClientCredentialsGrantHandler">
+                <property name="dataProvider" ref="oauthDataProvider" />
+            </bean>
+        </property>
+    </bean>
 
-	<bean id="oauthDataProvider"
-		class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
-		<property name="accessTokenLifetime" value="300" />
-		<property name="recycleRefreshTokens" value="false" />
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
+    <bean id="oauthDataProvider"
+        class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
+        <property name="accessTokenLifetime" value="300" />
+        <property name="recycleRefreshTokens" value="false" />
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
 
 </beans>
