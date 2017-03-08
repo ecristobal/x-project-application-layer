@@ -467,6 +467,7 @@
 						<imageName>52.57.20.226:8083/${docker.image.prefix}-${project.artifactId}</imageName>
 						<baseImage>openjdk:8u121</baseImage>
 						<pushImage>true</pushImage>
+						<serverId>docker-images</serverId>
 						<volumes>
 							<volume>/tmp</volume>
 						</volumes>
