@@ -7,8 +7,7 @@ import com.x.project.application.layer.domain.api.ApiComponent;
  * Abstract class to be expanded with the business logic of services.
  * 
  * This class is intended to be the <i>BusinessDelegate</i> implementation of
- * <a href=
- * "http://www.oracle.com/technetwork/java/businessdelegate-137562.html">Business
+ * <a href= "http://www.corej2eepatterns.com/BusinessDelegate.htm">Business
  * Delegate</a> design pattern.
  * 
  * This class will contain an <i>execute</i> with the business logic and as many
