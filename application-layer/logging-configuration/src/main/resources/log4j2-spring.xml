@@ -2,11 +2,11 @@
 <Configuration status="INFO" monitorInterval="30">
     <Appenders>
         <!-- TODO Update with Kafka configuration once available -->
-        <Kafka name="kafka" topic="log-architecture">
-            <PatternLayout
-                pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-            <Property name="bootstrap.servers">localhost:9092</Property>
-        </Kafka>
+<!--         <Kafka name="kafka" topic="log-architecture"> -->
+<!--             <PatternLayout -->
+<!--                 pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" /> -->
+<!--             <Property name="bootstrap.servers">localhost:9092</Property> -->
+<!--         </Kafka> -->
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout
                 pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />

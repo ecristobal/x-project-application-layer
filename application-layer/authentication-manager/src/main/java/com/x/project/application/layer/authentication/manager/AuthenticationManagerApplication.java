@@ -15,10 +15,6 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:/META-INF/spring/authentication-manager*.xml")
 public class AuthenticationManagerApplication {
 
-    private AuthenticationManagerApplication() {
-        // Empty constructor
-    }
-
     /**
      * Main method.
      * 
