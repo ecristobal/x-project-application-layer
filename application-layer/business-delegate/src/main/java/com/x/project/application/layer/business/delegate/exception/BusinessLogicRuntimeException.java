@@ -3,6 +3,10 @@ package com.x.project.application.layer.business.delegate.exception;
 /**
  * Business logic unchecked {@link RuntimeException}.
  * 
+ * This exception should be subclassed as needed by the developer in order to
+ * enable a better response handling which provides as much information as
+ * possible to the requester.
+ * 
  * @author Esteban Cristóbal
  */
 public class BusinessLogicRuntimeException extends RuntimeException {
