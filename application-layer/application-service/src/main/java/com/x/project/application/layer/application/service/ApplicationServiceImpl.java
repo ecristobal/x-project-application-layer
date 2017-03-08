@@ -1,7 +1,7 @@
 package com.x.project.application.layer.application.service;
 
 import com.x.project.application.layer.application.service.exception.ApplicationServiceException;
-import com.x.project.application.layer.business.delegate.ServiceBusinessDelegate;
+import com.x.project.application.layer.business.delegate.AbstractBusinessDelegate;
 import com.x.project.application.layer.business.delegate.exception.BusinessLogicException;
 import com.x.project.application.layer.domain.api.ApiComponent;
 
@@ -13,7 +13,7 @@ import com.x.project.application.layer.domain.api.ApiComponent;
 public class ApplicationServiceImpl<Tin extends ApiComponent, Tout extends ApiComponent>
         implements ApplicationService<Tin, Tout> {
 
-    private ServiceBusinessDelegate<Tin, Tout> businessDelegate;
+    private AbstractBusinessDelegate<Tin, Tout> businessDelegate;
 
     /*
      * (non-Javadoc)
@@ -32,7 +32,7 @@ public class ApplicationServiceImpl<Tin extends ApiComponent, Tout extends ApiCo
      * @param businessDelegate
      *            the businessDelegate to set
      */
-    public void setBusinessDelegate(ServiceBusinessDelegate<Tin, Tout> businessDelegate) {
+    public void setBusinessDelegate(AbstractBusinessDelegate<Tin, Tout> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 
