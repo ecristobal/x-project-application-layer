@@ -12,6 +12,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * <a href="https://en.wikipedia.org/wiki/Composite_pattern">Composite</a>
  * desing pattern implementation, being this interface the <i>Component</i>.
  * 
+ * Because of what is said, all classes which intends to be part of the service
+ * API should extend this class, being the <i>Composite</i> elements of the
+ * design pattern.
+ * 
  * @author Esteban Cristóbal
  */
 public abstract class ApiComponent {
