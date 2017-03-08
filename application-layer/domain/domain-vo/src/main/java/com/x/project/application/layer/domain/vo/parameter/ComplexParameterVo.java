@@ -17,8 +17,8 @@ public class ComplexParameterVo extends AbstractParameterVo {
      * 
      * @param name
      *            parameter name
-     * @param value
-     *            parameter value
+     * @param parameterList
+     *            parameter {@link List}
      */
     public ComplexParameterVo(final String name, final List<AbstractParameterVo> parameterList) {
         super(name);
