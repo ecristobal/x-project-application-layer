@@ -446,6 +446,7 @@
                     <execution>
                         <id>agent-for-it</id>
                         <goals>
+                            <goal>prepare-agent</goal>
                             <goal>prepare-agent-integration</goal>
                         </goals>
                     </execution>
@@ -490,7 +491,9 @@
                             <run>sh -c 'touch
                                 /${project.build.finalName}.jar'</run>
                         </runs>
-                        <entryPoint>[ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /${project.build.finalName}.jar" ]</entryPoint>
+                        <entryPoint>[ "sh", "-c", "java
+                            -Djava.security.egd=file:/dev/./urandom -jar
+                            /${project.build.finalName}.jar" ]</entryPoint>
                     </configuration>
                 </plugin>
                 <plugin>
