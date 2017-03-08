@@ -468,6 +468,7 @@
 						<baseImage>openjdk:8u121</baseImage>
 						<pushImage>true</pushImage>
 						<serverId>docker-images</serverId>
+						<registryUrl>52.57.20.226:8083</registryUrl>
 						<volumes>
 							<volume>/tmp</volume>
 						</volumes>
