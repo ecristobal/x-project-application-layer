@@ -19,6 +19,12 @@ public class AuthenticationManagerApplication {
         // Empty constructor
     }
 
+    /**
+     * Main method.
+     * 
+     * @param args
+     *            program arguments
+     */
     public static void main(String[] args) {
         SpringApplication.run(AuthenticationManagerApplication.class, args);
     }
