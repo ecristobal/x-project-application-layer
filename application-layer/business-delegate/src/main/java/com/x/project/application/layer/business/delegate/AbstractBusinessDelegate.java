@@ -1,5 +1,6 @@
 package com.x.project.application.layer.business.delegate;
 
+import com.x.project.application.layer.business.delegate.discovery.DiscoveryService;
 import com.x.project.application.layer.business.delegate.exception.BusinessLogicException;
 import com.x.project.application.layer.domain.api.ApiComponent;
 
@@ -15,7 +16,9 @@ import com.x.project.application.layer.domain.api.ApiComponent;
  * 
  * @author Esteban Cristóbal
  */
-public abstract class ServiceBusinessDelegate<Tin extends ApiComponent, Tout extends ApiComponent> {
+public abstract class AbstractBusinessDelegate<Tin extends ApiComponent, Tout extends ApiComponent> {
+
+    protected DiscoveryService discoveryService;
 
     /**
      * Abstract method to be implemented with the proper business logic.
@@ -30,5 +33,13 @@ public abstract class ServiceBusinessDelegate<Tin extends ApiComponent, Tout ext
      *             in case of errors during method execution
      */
     public abstract Tout execute(final Tin inputParamters, final String requestId) throws BusinessLogicException;
+
+    /**
+     * @param discoveryService
+     *            the discoveryService to set
+     */
+    public void setDiscoveryService(DiscoveryService discoveryService) {
+        this.discoveryService = discoveryService;
+    }
 
 }
