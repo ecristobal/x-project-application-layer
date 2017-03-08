@@ -1,4 +1,4 @@
-package com.x.project.application.layer.domain.vo.parameter;
+package com.x.project.application.layer.domain.api;
 
 import java.util.Map;
 
@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * 
  * @author Esteban Cristóbal
  */
-public abstract class ApiMapper {
+public abstract class ApiComponent {
 
     /**
      * @return {@link Map} representation of fields contained on API

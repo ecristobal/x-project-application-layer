@@ -1,9 +1,8 @@
 package com.x.project.application.layer.postactions.api;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.x.project.application.layer.domain.vo.parameter.ApiMapper;
+import com.x.project.application.layer.domain.api.ApiComponent;
 
 /**
  * Class that stores the context for the postactions.
@@ -14,16 +13,18 @@ public class PostactionContext {
 
     private String requestId;
 
-    private List<ApiMapper> outputParameters;
+    private ApiComponent outputParameters;
 
     /**
      * Class constructor.
      * 
      * @param requestId
      *            request ID associated with this context
+     * @param outputParameters
+     *            output parameters
      */
-    public PostactionContext(final String requestId) {
-        this.outputParameters = new ArrayList<ApiMapper>();
+    public PostactionContext(final String requestId, final ApiComponent outputParameters) {
+        this.outputParameters = outputParameters;
         this.requestId = requestId;
     }
 
@@ -37,7 +38,7 @@ public class PostactionContext {
     /**
      * @return output parameter {@link List}
      */
-    public List<ApiMapper> getOutputParameters() {
+    public ApiComponent getOutputParameters() {
         return outputParameters;
     }
 

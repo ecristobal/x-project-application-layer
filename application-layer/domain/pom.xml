@@ -9,6 +9,6 @@
     <artifactId>domain</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>domain-vo</module>
+        <module>domain-api</module>
     </modules>
 </project>

@@ -1,10 +1,8 @@
 package com.x.project.application.layer.preactions.api;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import com.x.project.application.layer.domain.vo.parameter.ApiMapper;
+import com.x.project.application.layer.domain.api.ApiComponent;
 
 /**
  * Class that stores the context for the preactions.
@@ -15,16 +13,18 @@ public class PreactionContext {
 
     private String requestId;
 
-    private List<ApiMapper> inputParameters;
+    private ApiComponent inputParameters;
 
     /**
      * Class constructor.
      * 
      * @param requestId
      *            request ID associated with this context
+     * @param inputParameters
+     *            input parameters
      */
-    public PreactionContext(final String requestId) {
-        this.inputParameters = new ArrayList<ApiMapper>();
+    public PreactionContext(final String requestId, final ApiComponent inputParameters) {
+        this.inputParameters = inputParameters;
         this.requestId = requestId;
     }
 
@@ -38,7 +38,7 @@ public class PreactionContext {
     /**
      * @return input parameter {@link Map}
      */
-    public List<ApiMapper> getInputParameters() {
+    public ApiComponent getInputParameters() {
         return inputParameters;
     }
 
