@@ -7,8 +7,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>preactions</module>
-        <module>postactions</module>
+        <module>chain</module>
         <module>application-service</module>
         <module>business-delegate</module>
         <module>authentication-manager</module>
