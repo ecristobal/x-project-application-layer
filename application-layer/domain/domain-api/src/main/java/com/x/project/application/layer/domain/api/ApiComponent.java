@@ -5,7 +5,7 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Interface to be implemented by API classes to simplify parameter extraction
+ * Class to be extended by API classes to simplify parameter extraction
  * in a generic way.
  * 
  * This interface is intended to be part of a
