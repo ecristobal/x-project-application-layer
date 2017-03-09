@@ -42,4 +42,61 @@ public class PostactionContext {
         return outputParameters;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((outputParameters == null) ? 0 : outputParameters.hashCode());
+        result = prime * result + ((requestId == null) ? 0 : requestId.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        PostactionContext other = (PostactionContext) obj;
+        if (outputParameters == null) {
+            if (other.outputParameters != null)
+                return false;
+        } else if (!outputParameters.equals(other.outputParameters))
+            return false;
+        if (requestId == null) {
+            if (other.requestId != null)
+                return false;
+        } else if (!requestId.equals(other.requestId))
+            return false;
+        return true;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("PostactionContext [requestId=");
+        builder.append(requestId);
+        builder.append(", outputParameters=");
+        builder.append(outputParameters);
+        builder.append("]");
+        return builder.toString();
+    }
+
 }

@@ -42,4 +42,61 @@ public class PreactionContext {
         return inputParameters;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((inputParameters == null) ? 0 : inputParameters.hashCode());
+        result = prime * result + ((requestId == null) ? 0 : requestId.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        PreactionContext other = (PreactionContext) obj;
+        if (inputParameters == null) {
+            if (other.inputParameters != null)
+                return false;
+        } else if (!inputParameters.equals(other.inputParameters))
+            return false;
+        if (requestId == null) {
+            if (other.requestId != null)
+                return false;
+        } else if (!requestId.equals(other.requestId))
+            return false;
+        return true;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("PreactionContext [requestId=");
+        builder.append(requestId);
+        builder.append(", inputParameters=");
+        builder.append(inputParameters);
+        builder.append("]");
+        return builder.toString();
+    }
+
 }
