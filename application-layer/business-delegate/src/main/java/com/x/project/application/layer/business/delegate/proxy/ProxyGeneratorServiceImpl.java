@@ -27,6 +27,7 @@ public class ProxyGeneratorServiceImpl implements ProxyGeneratorService {
      * @see com.x.project.application.layer.business.delegate.proxy.
      * ProxyGeneratorService#createJmsProxy(java.lang.Class, java.lang.String)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public <T> T createJmsProxy(final Class<T> serviceClass, final String queueName) {
         LOGGER.debug("Creating proxy client for service class {}", serviceClass.getName());
@@ -61,6 +62,7 @@ public class ProxyGeneratorServiceImpl implements ProxyGeneratorService {
      * @see com.x.project.application.layer.business.delegate.proxy.
      * ProxyGeneratorService#createHttpProxy(java.lang.Class, java.lang.String)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public <T> T createHttpProxy(Class<T> serviceClass, String endpoint) {
         LOGGER.debug("Creating proxy client for service class {}", serviceClass.getName());

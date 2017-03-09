@@ -45,13 +45,24 @@ public class ApplicationServiceImpl<T extends ApiComponent, V extends ApiCompone
      */
     @SuppressWarnings("unchecked")
     public V invoke(final T inputParamters) throws ApplicationServiceException, BusinessLogicException {
+        // Create request identifier
         final String requestId = UUID.randomUUID().toString();
         LOGGER.debug("Request identified with ID {}", requestId);
+        // Context creation and preactions execution
         Context context = new Context(requestId, inputParamters);
+        LOGGER.debug("Running preactions for request {}", requestId);
         context = this.preactionsChain.executeChain(context);
+        LOGGER.debug("Successfully executed preactions for request {}", requestId);
+        // Business logic execution
+        LOGGER.debug("Running business logic for request {}", requestId);
         final V response = this.businessDelegate.execute(inputParamters, requestId);
+        LOGGER.debug("Successfully executed business logic for request {}", requestId);
+        // Context update with business logic results and postactions execution
         context.setResponseParameters(response);
+        LOGGER.debug("Running posactions for request {}", requestId);
         context = this.postactionsChain.executeChain(context);
+        LOGGER.debug("Successfully executed postactions for request {}", requestId);
+        // Returning response to client
         return (V) context.getResponseParameters();
     }
 
