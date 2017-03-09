@@ -1,8 +1,8 @@
 package com.x.project.application.layer.business.generator.proxy;
 
 /**
- * Utility class to manage creation of JAX-WS proxies with HTTP and JMS
- * transport protocols.
+ * Utility class to manage creation of JAX-WS proxies with JMS
+ * transport protocol.
  * 
  * @author Esteban Cristóbal
  */
@@ -18,16 +18,5 @@ public interface ProxyGeneratorService {
      * @return SOAP-JMS proxy
      */
     public <T> T createJmsProxy(final Class<T> serviceClass, final String queueName);
-
-    /**
-     * Creates a proxy service which routes request through HTTP.
-     * 
-     * @param serviceClass
-     *            service to be proxied
-     * @param endpoint
-     *            URL where the service is published
-     * @return SOAP-HTTP proxy
-     */
-    public <T> T createHttpProxy(final Class<T> serviceClass, final String endpoint);
 
 }

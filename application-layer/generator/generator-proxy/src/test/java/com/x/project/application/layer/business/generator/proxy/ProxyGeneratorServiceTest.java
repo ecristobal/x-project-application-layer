@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/META-INF/spring/business-delegate.xml",
-        "classpath:/spring/business-delegate-test.xml" })
+@ContextConfiguration(locations = { "classpath:/META-INF/spring/generator-proxy.xml",
+        "classpath:/spring/generator-proxy-test.xml" })
 public class ProxyGeneratorServiceTest {
 
     @Resource(name = "proxyGeneratorService")
@@ -21,13 +21,6 @@ public class ProxyGeneratorServiceTest {
     @Test
     public void testCreateJmsProxy() {
         final List proxyService = this.proxyGeneratorService.createJmsProxy(List.class, "test");
-        Assert.assertNotNull(proxyService);
-        Assert.assertTrue(proxyService instanceof List);
-    }
-
-    @Test
-    public void testCreateHttpProxy() {
-        final List proxyService = this.proxyGeneratorService.createHttpProxy(List.class, "test");
         Assert.assertNotNull(proxyService);
         Assert.assertTrue(proxyService instanceof List);
     }

@@ -56,28 +56,6 @@ public class ProxyGeneratorServiceImpl implements ProxyGeneratorService {
         return serviceProxy;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.x.project.application.layer.business.delegate.proxy.
-     * ProxyGeneratorService#createHttpProxy(java.lang.Class, java.lang.String)
-     */
-    @Override
-    @SuppressWarnings("unchecked")
-    public <T> T createHttpProxy(Class<T> serviceClass, String endpoint) {
-        LOGGER.debug("Creating proxy client for service class {}", serviceClass.getName());
-        // Web Service proxy factory creation
-        final JaxWsProxyFactoryBean factoryBean = new JaxWsProxyFactoryBean();
-        // Setting HTTP endpoint
-        factoryBean.setAddress(endpoint);
-        // Setting Web Service interface
-        factoryBean.setServiceClass(serviceClass);
-        // Web Service proxy creation
-        final T serviceProxy = (T) factoryBean.create();
-        LOGGER.debug("Successfully created proxy client for service class {}", serviceClass.getName());
-        return serviceProxy;
-    }
-
     /**
      * @param connectionFactory
      *            the connectionFactory to set
