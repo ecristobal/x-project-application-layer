@@ -25,8 +25,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         "classpath:/spring/business-delegate-test.xml" })
 public class DiscoveryServiceTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DiscoveryServiceTest.class);
-
     @Resource(name = "discoveryClient")
     private DiscoveryClient discoveryClient;
 
