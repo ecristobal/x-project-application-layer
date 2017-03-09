@@ -6,6 +6,8 @@
     <bean id="applicationService"
         class="com.x.project.application.layer.application.service.ApplicationServiceImpl">
         <property name="businessDelegate" ref="businessDelegate" />
+        <property name="preactionsChain" ref="preactionsChain" />
+        <property name="postactionsChain" ref="postactionsChain" />
     </bean>
 
 </beans>

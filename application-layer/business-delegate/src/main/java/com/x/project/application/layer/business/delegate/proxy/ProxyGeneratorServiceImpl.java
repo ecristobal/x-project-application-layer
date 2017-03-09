@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
  * Implementation of {@link ProxyGeneratorService} interface.
  * 
  * @author Esteban Cristóbal
- *
  */
 public class ProxyGeneratorServiceImpl implements ProxyGeneratorService {
 

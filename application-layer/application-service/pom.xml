@@ -12,7 +12,7 @@
         <!-- Project dependencies -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>domain-api</artifactId>
+            <artifactId>chain-manager</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

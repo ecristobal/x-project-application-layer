@@ -1,7 +1,6 @@
 package com.x.project.application.layer.business.delegate.proxy;
 
 /**
- * 
  * Utility class to manage creation of JAX-WS proxies with HTTP and JMS
  * transport protocols.
  * 
