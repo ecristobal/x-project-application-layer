@@ -1,6 +1,6 @@
 package com.x.project.application.layer.chain.api;
 
-import com.x.project.application.layer.chain.api.exception.PreactionException;
+import com.x.project.application.layer.chain.api.exception.ChainException;
 import com.x.project.application.layer.domain.context.Context;
 
 /**
@@ -12,16 +12,17 @@ import com.x.project.application.layer.domain.context.Context;
  * 
  * @author Esteban Cristóbal
  */
-public interface PreactionHandler {
+public interface ChainHandler {
 
     /**
      * Entry method for every preaction.
      * 
      * @param preactionContext
      *            preaction context
-     * @throws PreactionException
+     * @return updated request context
+     * @throws ChainException
      *             in case of problems with preaction execution
      */
-    void handle(final Context preactionContext) throws PreactionException;
+    public Context handle(final Context preactionContext) throws ChainException;
 
 }

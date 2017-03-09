@@ -2,6 +2,7 @@ package com.x.project.application.layer.application.service;
 
 import com.x.project.application.layer.application.service.exception.ApplicationServiceException;
 import com.x.project.application.layer.business.delegate.exception.BusinessLogicException;
+import com.x.project.application.layer.chain.api.exception.ChainException;
 import com.x.project.application.layer.domain.api.ApiComponent;
 
 /**
@@ -32,7 +33,10 @@ public interface ApplicationService<T extends ApiComponent, V extends ApiCompone
      *             in case of problems with non-business logic operations
      * @throws BusinessLogicException
      *             in case of problems with business logic operations
+     * @throws ChainException
+     *             in case of problems with preactions' or postactions'
+     *             executions
      */
-    V invoke(T inputParamters) throws ApplicationServiceException, BusinessLogicException;
+    V invoke(T inputParamters) throws ApplicationServiceException, BusinessLogicException, ChainException;
 
 }

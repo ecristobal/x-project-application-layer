@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.x.project.application.layer.application.service.exception.ApplicationServiceException;
 import com.x.project.application.layer.business.delegate.AbstractBusinessDelegate;
 import com.x.project.application.layer.business.delegate.exception.BusinessLogicException;
+import com.x.project.application.layer.chain.api.exception.ChainException;
 import com.x.project.application.layer.chain.manager.ChainManager;
 import com.x.project.application.layer.domain.api.ApiComponent;
 import com.x.project.application.layer.domain.context.Context;
@@ -44,7 +45,7 @@ public class ApplicationServiceImpl<T extends ApiComponent, V extends ApiCompone
      * invoke(Tin)
      */
     @SuppressWarnings("unchecked")
-    public V invoke(final T inputParamters) throws ApplicationServiceException, BusinessLogicException {
+    public V invoke(final T inputParamters) throws ApplicationServiceException, BusinessLogicException, ChainException {
         // Create request identifier
         final String requestId = UUID.randomUUID().toString();
         LOGGER.debug("Request identified with ID {}", requestId);

@@ -5,7 +5,7 @@ package com.x.project.application.layer.chain.api.exception;
  * 
  * @author Esteban Cristóbal
  */
-public class PreactionRuntimeException extends RuntimeException {
+public class ChainRuntimeException extends RuntimeException {
 
     private static final long serialVersionUID = -6069878601451224324L;
 
@@ -15,7 +15,7 @@ public class PreactionRuntimeException extends RuntimeException {
      * @param message
      *            exception message
      */
-    public PreactionRuntimeException(String message) {
+    public ChainRuntimeException(String message) {
         super(message);
     }
 
@@ -25,7 +25,7 @@ public class PreactionRuntimeException extends RuntimeException {
      * @param cause
      *            exception cause
      */
-    public PreactionRuntimeException(Throwable cause) {
+    public ChainRuntimeException(Throwable cause) {
         super(cause);
     }
 
@@ -37,7 +37,7 @@ public class PreactionRuntimeException extends RuntimeException {
      * @param cause
      *            exception cause
      */
-    public PreactionRuntimeException(String message, Throwable cause) {
+    public ChainRuntimeException(String message, Throwable cause) {
         super(message, cause);
     }
 
