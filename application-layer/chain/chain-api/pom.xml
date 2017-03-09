@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.project.x</groupId>
-        <artifactId>preactions</artifactId>
+        <artifactId>chain</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>chain-api</artifactId>
