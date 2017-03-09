@@ -1,5 +1,6 @@
 package com.x.project.application.layer.postactions.api;
 
+import com.x.project.application.layer.domain.context.Context;
 import com.x.project.application.layer.postactions.api.exception.PostactionException;
 
 /**
@@ -21,6 +22,6 @@ public interface PostactionHandler {
      * @throws PostactionException
      *             in case of problems with postaction execution
      */
-    void handle(final PostactionContext postactionContext) throws PostactionException;
+    void handle(final Context postactionContext) throws PostactionException;
 
 }

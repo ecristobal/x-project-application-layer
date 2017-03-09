@@ -11,7 +11,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>domain-api</artifactId>
+            <artifactId>domain-context</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

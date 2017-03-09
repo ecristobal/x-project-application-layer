@@ -8,12 +8,20 @@ import com.x.project.application.layer.domain.api.ApiComponent;
 /**
  * Implementation of {@link ApplicationService} interface.
  * 
+ * @param <T>
+ *            {@link ApiComponent} subclass which maps the service's input
+ *            parameters
+ * 
+ * @param <V>
+ *            {@link ApiComponent} subclass which maps the service's output
+ *            parameters
+ * 
  * @author Esteban Cristóbal
  */
-public class ApplicationServiceImpl<Tin extends ApiComponent, Tout extends ApiComponent>
-        implements ApplicationService<Tin, Tout> {
+public class ApplicationServiceImpl<T extends ApiComponent, V extends ApiComponent>
+        implements ApplicationService<T, V> {
 
-    private AbstractBusinessDelegate<Tin, Tout> businessDelegate;
+    private AbstractBusinessDelegate<T, V> businessDelegate;
 
     /*
      * (non-Javadoc)
@@ -22,9 +30,9 @@ public class ApplicationServiceImpl<Tin extends ApiComponent, Tout extends ApiCo
      * com.x.project.application.layer.application.service.ApplicationService#
      * invoke(Tin)
      */
-    public Tout invoke(final Tin inputParamters) throws ApplicationServiceException, BusinessLogicException {
+    public V invoke(final T inputParamters) throws ApplicationServiceException, BusinessLogicException {
         // TODO Implement method details
-        final Tout response = this.businessDelegate.execute(inputParamters, "");
+        final V response = this.businessDelegate.execute(inputParamters, "");
         return response;
     }
 
@@ -32,7 +40,7 @@ public class ApplicationServiceImpl<Tin extends ApiComponent, Tout extends ApiCo
      * @param businessDelegate
      *            the businessDelegate to set
      */
-    public void setBusinessDelegate(AbstractBusinessDelegate<Tin, Tout> businessDelegate) {
+    public void setBusinessDelegate(AbstractBusinessDelegate<T, V> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

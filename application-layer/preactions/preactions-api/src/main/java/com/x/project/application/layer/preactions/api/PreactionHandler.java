@@ -1,5 +1,6 @@
 package com.x.project.application.layer.preactions.api;
 
+import com.x.project.application.layer.domain.context.Context;
 import com.x.project.application.layer.preactions.api.exception.PreactionException;
 
 /**
@@ -21,6 +22,6 @@ public interface PreactionHandler {
      * @throws PreactionException
      *             in case of problems with preaction execution
      */
-    void handle(final PreactionContext preactionContext) throws PreactionException;
+    void handle(final Context preactionContext) throws PreactionException;
 
 }

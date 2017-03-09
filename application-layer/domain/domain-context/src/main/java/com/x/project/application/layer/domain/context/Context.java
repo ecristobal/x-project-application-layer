@@ -1,4 +1,4 @@
-package com.x.project.application.layer.postactions.api;
+package com.x.project.application.layer.domain.context;
 
 import java.util.List;
 
@@ -9,22 +9,24 @@ import com.x.project.application.layer.domain.api.ApiComponent;
  * 
  * @author Esteban Cristóbal
  */
-public class PostactionContext {
+public class Context {
 
     private String requestId;
 
-    private ApiComponent outputParameters;
+    private ApiComponent requestParameters;
+
+    private ApiComponent responseParameters;
 
     /**
      * Class constructor.
      * 
      * @param requestId
      *            request ID associated with this context
-     * @param outputParameters
+     * @param requestParameters
      *            output parameters
      */
-    public PostactionContext(final String requestId, final ApiComponent outputParameters) {
-        this.outputParameters = outputParameters;
+    public Context(final String requestId, final ApiComponent requestParameters) {
+        this.requestParameters = requestParameters;
         this.requestId = requestId;
     }
 
@@ -38,8 +40,23 @@ public class PostactionContext {
     /**
      * @return output parameter {@link List}
      */
-    public ApiComponent getOutputParameters() {
-        return outputParameters;
+    public ApiComponent getRequestParameters() {
+        return requestParameters;
+    }
+
+    /**
+     * @return the responseParameters
+     */
+    public ApiComponent getResponseParameters() {
+        return responseParameters;
+    }
+
+    /**
+     * @param responseParameters
+     *            the responseParameters to set
+     */
+    public void setResponseParameters(ApiComponent responseParameters) {
+        this.responseParameters = responseParameters;
     }
 
     /*
@@ -51,8 +68,9 @@ public class PostactionContext {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((outputParameters == null) ? 0 : outputParameters.hashCode());
         result = prime * result + ((requestId == null) ? 0 : requestId.hashCode());
+        result = prime * result + ((requestParameters == null) ? 0 : requestParameters.hashCode());
+        result = prime * result + ((responseParameters == null) ? 0 : responseParameters.hashCode());
         return result;
     }
 
@@ -69,16 +87,21 @@ public class PostactionContext {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        PostactionContext other = (PostactionContext) obj;
-        if (outputParameters == null) {
-            if (other.outputParameters != null)
-                return false;
-        } else if (!outputParameters.equals(other.outputParameters))
-            return false;
+        Context other = (Context) obj;
         if (requestId == null) {
             if (other.requestId != null)
                 return false;
         } else if (!requestId.equals(other.requestId))
+            return false;
+        if (requestParameters == null) {
+            if (other.requestParameters != null)
+                return false;
+        } else if (!requestParameters.equals(other.requestParameters))
+            return false;
+        if (responseParameters == null) {
+            if (other.responseParameters != null)
+                return false;
+        } else if (!responseParameters.equals(other.responseParameters))
             return false;
         return true;
     }
@@ -91,10 +114,12 @@ public class PostactionContext {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("PostactionContext [requestId=");
+        builder.append("Context [requestId=");
         builder.append(requestId);
-        builder.append(", outputParameters=");
-        builder.append(outputParameters);
+        builder.append(", requestParameters=");
+        builder.append(requestParameters);
+        builder.append(", responseParameters=");
+        builder.append(responseParameters);
         builder.append("]");
         return builder.toString();
     }

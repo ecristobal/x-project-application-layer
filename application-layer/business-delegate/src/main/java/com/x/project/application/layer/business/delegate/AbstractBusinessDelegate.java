@@ -14,9 +14,16 @@ import com.x.project.application.layer.domain.api.ApiComponent;
  * This class will contain an <i>execute</i> with the business logic and as many
  * utility methods as needed to help developers to implement it.
  * 
+ * @param <T>
+ *            {@link ApiComponent} subclass which maps the service's input
+ *            parameters
+ * @param <V>
+ *            {@link ApiComponent} subclass which maps the service's output
+ *            parameters
+ * 
  * @author Esteban Cristóbal
  */
-public abstract class AbstractBusinessDelegate<Tin extends ApiComponent, Tout extends ApiComponent> {
+public abstract class AbstractBusinessDelegate<T extends ApiComponent, V extends ApiComponent> {
 
     protected DiscoveryService discoveryService;
 
@@ -32,7 +39,7 @@ public abstract class AbstractBusinessDelegate<Tin extends ApiComponent, Tout ex
      * @throws BusinessLogicException
      *             in case of errors during method execution
      */
-    public abstract Tout execute(final Tin inputParamters, final String requestId) throws BusinessLogicException;
+    public abstract V execute(final T inputParamters, final String requestId) throws BusinessLogicException;
 
     /**
      * @param discoveryService

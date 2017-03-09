@@ -3,13 +3,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.project.x</groupId>
-        <artifactId>application-layer</artifactId>
+        <artifactId>domain</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>domain</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>domain-api</module>
-        <module>domain-context</module>
-    </modules>
+    <artifactId>domain-context</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
