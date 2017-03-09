@@ -1,4 +1,4 @@
-package com.x.project.application.layer.business.delegate.proxy;
+package com.x.project.application.layer.business.generator.proxy;
 
 import javax.jms.ConnectionFactory;
 

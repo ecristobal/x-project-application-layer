@@ -1,4 +1,4 @@
-package com.x.project.application.layer.business.delegate.proxy;
+package com.x.project.application.layer.business.generator.proxy;
 
 /**
  * Utility class to manage creation of JAX-WS proxies with HTTP and JMS

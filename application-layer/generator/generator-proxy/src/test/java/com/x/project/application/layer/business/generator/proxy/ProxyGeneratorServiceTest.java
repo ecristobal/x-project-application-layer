@@ -1,4 +1,4 @@
-package com.x.project.application.layer.business.delegate.proxy;
+package com.x.project.application.layer.business.generator.proxy;
 
 import javax.annotation.Resource;
 
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.x.project.application.layer.business.delegate.discovery.DiscoveryService;
+import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/META-INF/spring/business-delegate.xml",
@@ -20,16 +20,16 @@ public class ProxyGeneratorServiceTest {
 
     @Test
     public void testCreateJmsProxy() {
-        final DiscoveryService discoveryService = this.proxyGeneratorService.createJmsProxy(DiscoveryService.class,
-                "test");
-        Assert.assertNotNull(discoveryService);
+        final List proxyService = this.proxyGeneratorService.createJmsProxy(List.class, "test");
+        Assert.assertNotNull(proxyService);
+        Assert.assertTrue(proxyService instanceof List);
     }
 
     @Test
     public void testCreateHttpProxy() {
-        final DiscoveryService discoveryService = this.proxyGeneratorService.createHttpProxy(DiscoveryService.class,
-                "test");
-        Assert.assertNotNull(discoveryService);
+        final List proxyService = this.proxyGeneratorService.createHttpProxy(List.class, "test");
+        Assert.assertNotNull(proxyService);
+        Assert.assertTrue(proxyService instanceof List);
     }
 
 }

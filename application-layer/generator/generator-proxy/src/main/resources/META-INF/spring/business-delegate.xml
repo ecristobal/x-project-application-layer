@@ -3,10 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="discoveryClient" class="org.mockito.Mockito"
-        factory-method="mock">
-        <constructor-arg type="java.lang.Class"
-            value="org.springframework.cloud.client.discovery.DiscoveryClient" />
+    <bean id="proxyGeneratorService"
+        class="com.x.project.application.layer.business.generator.proxy.ProxyGeneratorServiceImpl">
+        <property name="connectionFactory" ref="connectionFactory" />
     </bean>
 
 </beans>
