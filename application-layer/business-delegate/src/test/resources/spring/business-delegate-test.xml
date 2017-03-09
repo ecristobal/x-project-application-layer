@@ -9,4 +9,10 @@
             value="org.springframework.cloud.client.discovery.DiscoveryClient" />
     </bean>
 
+    <bean id="connectionFactory" class="org.mockito.Mockito"
+        factory-method="mock">
+        <constructor-arg type="java.lang.Class"
+            value="javax.jms.ConnectionFactory" />
+    </bean>
+
 </beans>

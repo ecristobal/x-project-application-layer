@@ -8,4 +8,9 @@
         <property name="discoveryClient" ref="discoveryClient" />
     </bean>
 
+    <bean id="proxyGeneratorService"
+        class="com.x.project.application.layer.business.delegate.proxy.ProxyGeneratorServiceImpl">
+        <property name="connectionFactory" ref="connectionFactory" />
+    </bean>
+
 </beans>

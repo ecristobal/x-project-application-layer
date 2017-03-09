@@ -2,6 +2,7 @@ package com.x.project.application.layer.business.delegate;
 
 import com.x.project.application.layer.business.delegate.discovery.DiscoveryService;
 import com.x.project.application.layer.business.delegate.exception.BusinessLogicException;
+import com.x.project.application.layer.business.delegate.proxy.ProxyGeneratorService;
 import com.x.project.application.layer.domain.api.ApiComponent;
 
 /**
@@ -27,6 +28,8 @@ public abstract class AbstractBusinessDelegate<T extends ApiComponent, V extends
 
     protected DiscoveryService discoveryService;
 
+    protected ProxyGeneratorService proxyGeneratorService;
+
     /**
      * Abstract method to be implemented with the proper business logic.
      * 
@@ -47,6 +50,14 @@ public abstract class AbstractBusinessDelegate<T extends ApiComponent, V extends
      */
     public void setDiscoveryService(DiscoveryService discoveryService) {
         this.discoveryService = discoveryService;
+    }
+
+    /**
+     * @param proxyGeneratorService
+     *            the proxyGeneratorService to set
+     */
+    public void setProxyGeneratorService(ProxyGeneratorService proxyGeneratorService) {
+        this.proxyGeneratorService = proxyGeneratorService;
     }
 
 }
