@@ -28,7 +28,7 @@ public class ChainManagerTest {
 
     @Before
     public void setUp() throws ChainException {
-        Mockito.when(this.chainHandler.handle(Mockito.any())).thenAnswer(new Answer<Context>() {
+        Mockito.when(this.chainHandler.handle(Mockito.any(Context.class))).thenAnswer(new Answer<Context>() {
             @Override
             public Context answer(InvocationOnMock invocation) throws Throwable {
                 return invocation.getArgumentAt(0, Context.class);
