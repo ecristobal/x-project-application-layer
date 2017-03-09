@@ -14,7 +14,7 @@ import com.x.project.application.layer.domain.context.Context;
  */
 public class ChainManagerImpl implements ChainManager {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ChainManagerTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChainManagerImpl.class);
 
     private ChainHandler chainHandler;
 
