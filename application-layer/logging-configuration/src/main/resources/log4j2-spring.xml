@@ -14,7 +14,7 @@
     </Appenders>
     <Loggers>
         <Root level="INFO">
-            <AppenderRef ref="kafka" />
+<!--             <AppenderRef ref="kafka" /> -->
             <AppenderRef ref="console" />
         </Root>
     </Loggers>

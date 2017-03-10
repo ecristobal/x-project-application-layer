@@ -126,6 +126,10 @@
                         <goals>
                             <goal>start</goal>
                         </goals>
+                        <configuration>
+                            <maxAttempts>6</maxAttempts>
+                            <wait>10000</wait>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>post-integration-test</id>
