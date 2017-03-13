@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.x.project.application.layer.chain.api.ChainHandler;
 import com.x.project.application.layer.chain.api.exception.ChainException;
+import com.x.project.application.layer.chain.manager.exception.ChainManagerException;
 import com.x.project.application.layer.domain.context.Context;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,7 +38,7 @@ public class ChainManagerTest {
     }
 
     @Test
-    public void testExecuteChain() throws ChainException {
+    public void testExecuteChain() throws ChainManagerException {
         final Context context = Mockito.mock(Context.class);
         final Context responseContext = this.chainManager.executeChain(context);
         Assert.assertEquals(context, responseContext);

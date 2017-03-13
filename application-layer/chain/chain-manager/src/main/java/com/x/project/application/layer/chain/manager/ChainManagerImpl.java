@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.x.project.application.layer.chain.api.ChainHandler;
 import com.x.project.application.layer.chain.api.exception.ChainException;
+import com.x.project.application.layer.chain.manager.exception.ChainManagerException;
 import com.x.project.application.layer.domain.context.Context;
 
 /**
@@ -26,9 +27,15 @@ public class ChainManagerImpl implements ChainManager {
      * com.x.project.application.layer.domain.context.Context)
      */
     @Override
-    public Context executeChain(Context context) throws ChainException {
+    public Context executeChain(Context context) throws ChainManagerException {
         LOGGER.debug("Starting chain execution for request {}", context.getRequestId());
-        final Context finalContext = this.chainHandler.handle(context);
+        Context finalContext;
+        try {
+            finalContext = this.chainHandler.handle(context);
+        } catch (ChainException e) {
+            LOGGER.error("Exception thrown during chain execution:\n", e);
+            throw new ChainManagerException(e);
+        }
         LOGGER.debug("Successfully finished chain execution for request {}", context.getRequestId());
         return finalContext;
     }
