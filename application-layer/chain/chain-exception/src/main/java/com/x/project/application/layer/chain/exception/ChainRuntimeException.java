@@ -1,13 +1,15 @@
-package com.x.project.application.layer.chain.api.exception;
+package com.x.project.application.layer.chain.exception;
+
+import com.x.project.application.layer.domain.exception.ServiceRuntimeException;
 
 /**
- * Preactions' unchecked {@link RuntimeException}.
+ * Chain unchecked {@link RuntimeException}.
  * 
  * @author Esteban Cristóbal
  */
-public class ChainRuntimeException extends RuntimeException {
+public class ChainRuntimeException extends ServiceRuntimeException {
 
-    private static final long serialVersionUID = -6069878601451224324L;
+    private static final long serialVersionUID = 7345624675173933557L;
 
     /**
      * Class constructor.

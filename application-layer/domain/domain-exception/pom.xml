@@ -3,16 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.project.x</groupId>
-        <artifactId>application-layer</artifactId>
+        <artifactId>domain</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>chain</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>chain-api</module>
-        <module>chain-manager</module>
-        <module>chain-exception</module>
-    </modules>
-
+    <artifactId>domain-exception</artifactId>
 </project>

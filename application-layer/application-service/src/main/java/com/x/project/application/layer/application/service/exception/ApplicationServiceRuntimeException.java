@@ -1,11 +1,13 @@
 package com.x.project.application.layer.application.service.exception;
 
+import com.x.project.application.layer.domain.exception.ServiceRuntimeException;
+
 /**
  * Application service unchecked {@link RuntimeException}.
  * 
  * @author Esteban Cristóbal
  */
-public class ApplicationServiceRuntimeException extends RuntimeException {
+public class ApplicationServiceRuntimeException extends ServiceRuntimeException {
 
     private static final long serialVersionUID = -8948003942204630649L;
 

@@ -5,13 +5,11 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.x.project.application.layer.application.service.exception.ApplicationServiceException;
 import com.x.project.application.layer.business.delegate.AbstractBusinessDelegate;
-import com.x.project.application.layer.business.delegate.exception.BusinessLogicException;
 import com.x.project.application.layer.chain.manager.ChainManager;
-import com.x.project.application.layer.chain.manager.exception.ChainManagerException;
 import com.x.project.application.layer.domain.api.ApiComponent;
 import com.x.project.application.layer.domain.context.Context;
+import com.x.project.application.layer.domain.exception.ServiceException;
 
 /**
  * Implementation of {@link ApplicationService} interface.
@@ -42,11 +40,10 @@ public class ApplicationServiceImpl<T extends ApiComponent, V extends ApiCompone
      * 
      * @see
      * com.x.project.application.layer.application.service.ApplicationService#
-     * invoke(Tin)
+     * invoke(com.x.project.application.layer.domain.api.ApiComponent)
      */
     @SuppressWarnings("unchecked")
-    public V invoke(final T inputParamters)
-            throws ApplicationServiceException, BusinessLogicException, ChainManagerException {
+    public V invoke(final T inputParamters) throws ServiceException {
         // Create request identifier
         final String requestId = UUID.randomUUID().toString();
         LOGGER.debug("Request identified with ID {}", requestId);

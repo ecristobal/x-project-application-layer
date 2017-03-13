@@ -4,6 +4,7 @@ import com.x.project.application.layer.application.service.exception.Application
 import com.x.project.application.layer.business.delegate.exception.BusinessLogicException;
 import com.x.project.application.layer.chain.manager.exception.ChainManagerException;
 import com.x.project.application.layer.domain.api.ApiComponent;
+import com.x.project.application.layer.domain.exception.ServiceException;
 
 /**
  * Interface intended to define the <i>ApplicationService</i> element of
@@ -31,7 +32,11 @@ public interface ApplicationService<T extends ApiComponent, V extends ApiCompone
      *         client
      * @throws ApplicationServiceException
      *             in case of problems with service execution
+     * @throws BusinessLogicException
+     *             in case of problems with business logic execution
+     * @throws ChainManagerException
+     *             in case of problems with preactions or pastactions execution
      */
-    V invoke(T inputParamters) throws ApplicationServiceException, BusinessLogicException, ChainManagerException;
+    V invoke(T inputParamters) throws ServiceException;
 
 }

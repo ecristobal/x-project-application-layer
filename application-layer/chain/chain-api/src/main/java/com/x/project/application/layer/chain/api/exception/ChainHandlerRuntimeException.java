@@ -1,15 +1,15 @@
-package com.x.project.application.layer.chain.manager.exception;
+package com.x.project.application.layer.chain.api.exception;
 
 import com.x.project.application.layer.chain.exception.ChainRuntimeException;
 
 /**
- * Chain manager unchecked {@link RuntimeException}.
+ * Preactions' unchecked {@link RuntimeException}.
  * 
  * @author Esteban Cristóbal
  */
-public class ChainManagerRuntimeException extends ChainRuntimeException {
+public class ChainHandlerRuntimeException extends ChainRuntimeException {
 
-    private static final long serialVersionUID = 7345624675173933557L;
+    private static final long serialVersionUID = -6069878601451224324L;
 
     /**
      * Class constructor.
@@ -17,7 +17,7 @@ public class ChainManagerRuntimeException extends ChainRuntimeException {
      * @param message
      *            exception message
      */
-    public ChainManagerRuntimeException(String message) {
+    public ChainHandlerRuntimeException(String message) {
         super(message);
     }
 
@@ -27,7 +27,7 @@ public class ChainManagerRuntimeException extends ChainRuntimeException {
      * @param cause
      *            exception cause
      */
-    public ChainManagerRuntimeException(Throwable cause) {
+    public ChainHandlerRuntimeException(Throwable cause) {
         super(cause);
     }
 
@@ -39,7 +39,7 @@ public class ChainManagerRuntimeException extends ChainRuntimeException {
      * @param cause
      *            exception cause
      */
-    public ChainManagerRuntimeException(String message, Throwable cause) {
+    public ChainHandlerRuntimeException(String message, Throwable cause) {
         super(message, cause);
     }
 

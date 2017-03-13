@@ -15,6 +15,11 @@
             <artifactId>chain-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>chain-exception</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- Spring Framework dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>

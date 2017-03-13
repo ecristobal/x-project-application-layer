@@ -1,15 +1,15 @@
-package com.x.project.application.layer.application.service.exception;
+package com.x.project.application.layer.chain.exception;
 
 import com.x.project.application.layer.domain.exception.ServiceException;
 
 /**
- * Application service checked {@link Exception}.
+ * Chain checked {@link Exception}.
  * 
  * @author Esteban Cristóbal
  */
-public class ApplicationServiceException extends ServiceException {
+public class ChainException extends ServiceException {
 
-    private static final long serialVersionUID = -8591795279572936954L;
+    private static final long serialVersionUID = 3858478949165839459L;
 
     /**
      * Class constructor.
@@ -17,7 +17,7 @@ public class ApplicationServiceException extends ServiceException {
      * @param message
      *            exception message
      */
-    public ApplicationServiceException(String message) {
+    public ChainException(String message) {
         super(message);
     }
 
@@ -27,7 +27,7 @@ public class ApplicationServiceException extends ServiceException {
      * @param cause
      *            exception cause
      */
-    public ApplicationServiceException(Throwable cause) {
+    public ChainException(Throwable cause) {
         super(cause);
     }
 
@@ -39,7 +39,7 @@ public class ApplicationServiceException extends ServiceException {
      * @param cause
      *            exception cause
      */
-    public ApplicationServiceException(String message, Throwable cause) {
+    public ChainException(String message, Throwable cause) {
         super(message, cause);
     }
 

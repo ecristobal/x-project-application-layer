@@ -1,5 +1,7 @@
 package com.x.project.application.layer.business.delegate.exception;
 
+import com.x.project.application.layer.domain.exception.ServiceRuntimeException;
+
 /**
  * Business logic unchecked {@link RuntimeException}.
  * 
@@ -9,7 +11,7 @@ package com.x.project.application.layer.business.delegate.exception;
  * 
  * @author Esteban Cristóbal
  */
-public class BusinessLogicRuntimeException extends RuntimeException {
+public class BusinessLogicRuntimeException extends ServiceRuntimeException {
 
     private static final long serialVersionUID = -3961607320663524113L;
 

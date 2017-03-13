@@ -1,5 +1,7 @@
 package com.x.project.application.layer.chain.manager;
 
+import com.x.project.application.layer.chain.api.exception.ChainHandlerException;
+import com.x.project.application.layer.chain.exception.ChainException;
 import com.x.project.application.layer.chain.manager.exception.ChainManagerException;
 import com.x.project.application.layer.domain.context.Context;
 
@@ -21,8 +23,10 @@ public interface ChainManager {
      *            request context
      * @return updated request context
      * @throws ChainManagerException
-     *             in case of errors during chain execution
+     *             in case of errors during chain manager execution
+     * @throws ChainHandlerException
+     *             in case of errors during chain handler execution
      */
-    public Context executeChain(final Context context) throws ChainManagerException;
+    public Context executeChain(final Context context) throws ChainException;
 
 }

@@ -1,11 +1,13 @@
 package com.x.project.application.layer.chain.api.exception;
 
+import com.x.project.application.layer.chain.exception.ChainException;
+
 /**
  * Preactions' checked {@link Exception}.
  * 
  * @author Esteban Cristóbal
  */
-public class ChainException extends Exception {
+public class ChainHandlerException extends ChainException {
 
     private static final long serialVersionUID = 2859229859103209153L;
 
@@ -15,7 +17,7 @@ public class ChainException extends Exception {
      * @param message
      *            exception message
      */
-    public ChainException(String message) {
+    public ChainHandlerException(String message) {
         super(message);
     }
 
@@ -25,7 +27,7 @@ public class ChainException extends Exception {
      * @param cause
      *            exception cause
      */
-    public ChainException(Throwable cause) {
+    public ChainHandlerException(Throwable cause) {
         super(cause);
     }
 
@@ -37,7 +39,7 @@ public class ChainException extends Exception {
      * @param cause
      *            exception cause
      */
-    public ChainException(String message, Throwable cause) {
+    public ChainHandlerException(String message, Throwable cause) {
         super(message, cause);
     }
 

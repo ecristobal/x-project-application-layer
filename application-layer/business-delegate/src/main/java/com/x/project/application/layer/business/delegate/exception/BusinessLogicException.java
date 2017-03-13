@@ -1,5 +1,7 @@
 package com.x.project.application.layer.business.delegate.exception;
 
+import com.x.project.application.layer.domain.exception.ServiceException;
+
 /**
  * Business logic checked {@link Exception}.
  * 
@@ -9,7 +11,7 @@ package com.x.project.application.layer.business.delegate.exception;
  * 
  * @author Esteban Cristóbal
  */
-public class BusinessLogicException extends Exception {
+public class BusinessLogicException extends ServiceException {
 
     private static final long serialVersionUID = 4584674296571297000L;
 

@@ -11,5 +11,6 @@
     <modules>
         <module>domain-api</module>
         <module>domain-context</module>
+        <module>domain-exception</module>
     </modules>
 </project>
