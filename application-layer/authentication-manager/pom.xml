@@ -127,7 +127,7 @@
                             <goal>start</goal>
                         </goals>
                         <configuration>
-                            <maxAttempts>6</maxAttempts>
+                            <maxAttempts>10</maxAttempts>
                             <wait>10000</wait>
                         </configuration>
                     </execution>
