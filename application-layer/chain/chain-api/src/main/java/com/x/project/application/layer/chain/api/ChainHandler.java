@@ -1,6 +1,6 @@
 package com.x.project.application.layer.chain.api;
 
-import com.x.project.application.layer.chain.api.exception.ChainHandlerException;
+import com.x.project.application.layer.chain.exception.ChainException;
 import com.x.project.application.layer.domain.context.Context;
 
 /**
@@ -20,9 +20,9 @@ public interface ChainHandler {
      * @param preactionContext
      *            preaction context
      * @return updated request context
-     * @throws ChainHandlerException
+     * @throws ChainException
      *             in case of problems with preaction execution
      */
-    public Context handle(final Context preactionContext) throws ChainHandlerException;
+    public Context handle(final Context preactionContext) throws ChainException;
 
 }

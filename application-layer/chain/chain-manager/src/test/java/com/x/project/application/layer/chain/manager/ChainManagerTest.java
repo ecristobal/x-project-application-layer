@@ -13,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.x.project.application.layer.chain.api.ChainHandler;
-import com.x.project.application.layer.chain.api.exception.ChainHandlerException;
 import com.x.project.application.layer.chain.exception.ChainException;
 import com.x.project.application.layer.domain.context.Context;
 
@@ -28,7 +27,7 @@ public class ChainManagerTest {
     private ChainManager chainManager;
 
     @Before
-    public void setUp() throws ChainHandlerException {
+    public void setUp() throws ChainException {
         Mockito.when(this.chainHandler.handle(Mockito.any(Context.class))).thenAnswer(new Answer<Context>() {
             @Override
             public Context answer(InvocationOnMock invocation) throws Throwable {
