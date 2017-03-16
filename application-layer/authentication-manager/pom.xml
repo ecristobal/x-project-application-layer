@@ -99,11 +99,11 @@
             <groupId>com.atomikos</groupId>
             <artifactId>transactions-jta</artifactId>
         </dependency>
-        <!-- Database dependencies -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
+            <groupId>com.atomikos</groupId>
+            <artifactId>transactions-jdbc</artifactId>
         </dependency>
+        <!-- Database dependencies -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

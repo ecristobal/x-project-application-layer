@@ -11,8 +11,8 @@
     <dependencies>
         <!-- JMS dependencies -->
         <dependency>
-            <groupId>org.hornetq</groupId>
-            <artifactId>hornetq-jms-client</artifactId>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-client</artifactId>
         </dependency>
         <!-- Apache CXF dependencies -->
         <dependency>

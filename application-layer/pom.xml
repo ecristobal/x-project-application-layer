@@ -27,7 +27,6 @@
         <cxf.version>3.1.10</cxf.version>
         <hibernate.version>5.2.6.Final</hibernate.version>
         <eureka.version>1.2.5.RELEASE</eureka.version>
-        <hornetq.version>2.4.7.Final</hornetq.version>
         <!-- Docker image prefix -->
         <docker.image.prefix>application-layer</docker.image.prefix>
     </properties>
@@ -157,6 +156,17 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jms</artifactId>
                 <version>${spring.version}</version>
                 <exclusions>
                     <exclusion>
@@ -302,17 +312,6 @@
             </dependency>
             <!-- Database dependencies -->
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-dbcp2</artifactId>
-                <version>2.1.1</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>6.0.5</version>
@@ -321,6 +320,11 @@
             <dependency>
                 <groupId>com.atomikos</groupId>
                 <artifactId>transactions-jta</artifactId>
+                <version>4.0.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atomikos</groupId>
+                <artifactId>transactions-jdbc</artifactId>
                 <version>4.0.4</version>
             </dependency>
             <dependency>
@@ -368,9 +372,9 @@
             </dependency>
             <!-- JMS dependencies -->
             <dependency>
-                <groupId>org.hornetq</groupId>
-                <artifactId>hornetq-jms-client</artifactId>
-                <version>${hornetq.version}</version>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-client</artifactId>
+                <version>5.14.3</version>
             </dependency>
             <!-- Test dependencies -->
             <dependency>
@@ -511,9 +515,12 @@
                             </resource>
                         </resources>
                         <runs>
-                            <run>sh -c 'touch /${project.build.finalName}.jar'</run>
+                            <run>sh -c 'touch
+                                /${project.build.finalName}.jar'</run>
                         </runs>
-                        <entryPoint>[ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /${project.build.finalName}.jar" ]</entryPoint>
+                        <entryPoint>[ "sh", "-c", "java
+                            -Djava.security.egd=file:/dev/./urandom -jar
+                            /${project.build.finalName}.jar" ]</entryPoint>
                     </configuration>
                 </plugin>
                 <plugin>
