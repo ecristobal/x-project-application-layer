@@ -27,6 +27,7 @@
         <cxf.version>3.1.10</cxf.version>
         <hibernate.version>5.2.6.Final</hibernate.version>
         <eureka.version>1.2.5.RELEASE</eureka.version>
+        <activemq.version>5.14.3</activemq.version>
         <atomikos.version>4.0.4</atomikos.version>
         <!-- Docker image prefix -->
         <docker.image.prefix>application-layer</docker.image.prefix>
@@ -380,7 +381,12 @@
             <dependency>
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>activemq-client</artifactId>
-                <version>5.14.3</version>
+                <version>${activemq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-jms-pool</artifactId>
+                <version>${activemq.version}</version>
             </dependency>
             <!-- Test dependencies -->
             <dependency>
