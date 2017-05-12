@@ -17,26 +17,25 @@ import com.x.project.application.layer.domain.exception.ServiceException;
  * @param <V>
  *            {@link ApiComponent} subclass which maps the service's output
  *            parameters
- * 
  * @author Esteban Cristóbal
  */
 public interface ApplicationService<T extends ApiComponent, V extends ApiComponent> {
 
-    /**
-     * Performs the operations related with the service execution requested by
-     * the client.
-     * 
-     * @param inputParamters
-     *            input parameters
-     * @return {@link ApiComponent} subclass with the response to be sent to the
-     *         client
-     * @throws ApplicationServiceException
-     *             in case of problems with service execution
-     * @throws BusinessLogicException
-     *             in case of problems with business logic execution
-     * @throws ChainException
-     *             in case of problems with preactions or pastactions execution
-     */
-    V invoke(T inputParamters) throws ServiceException;
+	/**
+	 * Performs the operations related with the service execution requested by
+	 * the client.
+	 * 
+	 * @param inputParamters
+	 *            input parameters
+	 * @return {@link ApiComponent} subclass with the response to be sent to the
+	 *         client
+	 * @throws ApplicationServiceException
+	 *             in case of problems with service execution
+	 * @throws BusinessLogicException
+	 *             in case of problems with business logic execution
+	 * @throws ChainException
+	 *             in case of problems with preactions or pastactions execution
+	 */
+	V invoke(T inputParamters) throws ServiceException;
 
 }

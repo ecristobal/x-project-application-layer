@@ -15,14 +15,14 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:/META-INF/spring/authentication-manager*.xml")
 public class AuthenticationManagerApplication {
 
-    /**
-     * Main method.
-     * 
-     * @param args
-     *            program arguments
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(AuthenticationManagerApplication.class, args);
-    }
+	/**
+	 * Main method.
+	 * 
+	 * @param args
+	 *            program arguments
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(AuthenticationManagerApplication.class, args);
+	}
 
 }

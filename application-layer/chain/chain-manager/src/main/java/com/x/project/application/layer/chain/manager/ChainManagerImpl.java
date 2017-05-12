@@ -14,32 +14,31 @@ import com.x.project.application.layer.domain.context.Context;
  */
 public class ChainManagerImpl implements ChainManager {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ChainManagerImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ChainManagerImpl.class);
 
-    private ChainHandler chainHandler;
+	private ChainHandler chainHandler;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.x.project.application.layer.chain.manager.ChainManager#executeChain(
-     * com.x.project.application.layer.domain.context.Context)
-     */
-    @Override
-    public Context executeChain(Context context) throws ChainException {
-        LOGGER.debug("Starting chain execution for request {}", context.getRequestId());
-        Context finalContext;
-        finalContext = this.chainHandler.handle(context);
-        LOGGER.debug("Successfully finished chain execution for request {}", context.getRequestId());
-        return finalContext;
-    }
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.x.project.application.layer.chain.manager.ChainManager#executeChain(
+	 * com.x.project.application.layer.domain.context.Context)
+	 */
+	@Override
+	public Context executeChain(Context context) throws ChainException {
+		LOGGER.debug("Starting chain execution for request {}", context.getRequestId());
+		Context finalContext;
+		finalContext = this.chainHandler.handle(context);
+		LOGGER.debug("Successfully finished chain execution for request {}", context.getRequestId());
+		return finalContext;
+	}
 
-    /**
-     * @param chainHandler
-     *            the chainHandler to set
-     */
-    public void setChainHandler(ChainHandler chainHandler) {
-        this.chainHandler = chainHandler;
-    }
+	/**
+	 * @param chainHandler
+	 *            the chainHandler to set
+	 */
+	public void setChainHandler(ChainHandler chainHandler) {
+		this.chainHandler = chainHandler;
+	}
 
 }

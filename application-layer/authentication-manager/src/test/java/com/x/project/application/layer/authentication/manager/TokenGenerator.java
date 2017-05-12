@@ -10,9 +10,9 @@ import javax.ws.rs.core.Response;
 @Path("/token")
 public interface TokenGenerator {
 
-    @POST
-    @Consumes("application/x-www-form-urlencoded")
-    @Produces("application/json")
-    public Response getToken(final MultivaluedMap<String, String> params);
+	@POST
+	@Consumes("application/x-www-form-urlencoded")
+	@Produces("application/json")
+	public Response getToken(final MultivaluedMap<String, String> params);
 
 }

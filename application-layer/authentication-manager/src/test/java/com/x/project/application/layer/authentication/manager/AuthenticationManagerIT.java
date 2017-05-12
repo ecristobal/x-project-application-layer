@@ -14,34 +14,34 @@ import org.springframework.boot.json.JacksonJsonParser;
 
 public class AuthenticationManagerIT {
 
-    private static final String AUTHENTICATION_URL = "http://localhost:8081/services/oauth";
+	private static final String AUTHENTICATION_URL = "http://localhost:8081/services/oauth";
 
-    private TokenGenerator tokenGenerator;
+	private TokenGenerator tokenGenerator;
 
-    @Before
-    public void setUp() {
-        this.tokenGenerator = JAXRSClientFactory.create(AUTHENTICATION_URL, TokenGenerator.class, "test", "test", null);
-    }
+	@Before
+	public void setUp() {
+		this.tokenGenerator = JAXRSClientFactory.create(AUTHENTICATION_URL, TokenGenerator.class, "test", "test", null);
+	}
 
-    @Test
-    public void test() {
-        final MultivaluedMap<String, String> params = new MultivaluedHashMap<String, String>(1);
-        params.add("grant_type", "client_credentials");
-        final Response response = this.tokenGenerator.getToken(params);
-        Assert.assertEquals(200, response.getStatus());
-        final String json = response.readEntity(String.class);
-        final Map<String, Object> parsedJson = this.parseResponse(json);
-        Assert.assertTrue(parsedJson.containsKey("access_token"));
-        Assert.assertFalse(((String) parsedJson.get("access_token")).isEmpty());
-        Assert.assertTrue(parsedJson.containsKey("token_type"));
-        Assert.assertEquals("Bearer", parsedJson.get("token_type"));
-        Assert.assertTrue(parsedJson.containsKey("expires_in"));
-        Assert.assertEquals(300, parsedJson.get("expires_in"));
-    }
+	@Test
+	public void test() {
+		final MultivaluedMap<String, String> params = new MultivaluedHashMap<String, String>(1);
+		params.add("grant_type", "client_credentials");
+		final Response response = this.tokenGenerator.getToken(params);
+		Assert.assertEquals(200, response.getStatus());
+		final String json = response.readEntity(String.class);
+		final Map<String, Object> parsedJson = this.parseResponse(json);
+		Assert.assertTrue(parsedJson.containsKey("access_token"));
+		Assert.assertFalse(((String) parsedJson.get("access_token")).isEmpty());
+		Assert.assertTrue(parsedJson.containsKey("token_type"));
+		Assert.assertEquals("Bearer", parsedJson.get("token_type"));
+		Assert.assertTrue(parsedJson.containsKey("expires_in"));
+		Assert.assertEquals(300, parsedJson.get("expires_in"));
+	}
 
-    private Map<String, Object> parseResponse(final String json) {
-        JacksonJsonParser jsonParser = new JacksonJsonParser();
-        return jsonParser.parseMap(json);
-    }
+	private Map<String, Object> parseResponse(final String json) {
+		JacksonJsonParser jsonParser = new JacksonJsonParser();
+		return jsonParser.parseMap(json);
+	}
 
 }

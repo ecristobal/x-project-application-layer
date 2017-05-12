@@ -8,13 +8,13 @@ package com.x.project.application.layer.business.delegate.discovery;
  */
 public interface DiscoveryService {
 
-    /**
-     * Gets the endpoint associated with the specified service name.
-     * 
-     * @param serviceName
-     *            service name
-     * @return service endpoint
-     */
-    public String getEndpoint(final String serviceName);
+	/**
+	 * Gets the endpoint associated with the specified service name.
+	 * 
+	 * @param serviceName
+	 *            service name
+	 * @return service endpoint
+	 */
+	public String getEndpoint(final String serviceName);
 
 }

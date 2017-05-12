@@ -5,9 +5,9 @@ import com.x.project.application.layer.business.delegate.exception.BusinessLogic
 
 public class MockBusinessDelegate extends AbstractBusinessDelegate<MockApiComponent, MockApiComponent> {
 
-    @Override
-    public MockApiComponent execute(MockApiComponent inputParamters, String requestId) throws BusinessLogicException {
-        return inputParamters;
-    }
+	@Override
+	public MockApiComponent execute(MockApiComponent inputParamters, String requestId) throws BusinessLogicException {
+		return inputParamters;
+	}
 
 }

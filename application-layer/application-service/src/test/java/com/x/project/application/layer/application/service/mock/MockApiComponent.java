@@ -4,25 +4,25 @@ import com.x.project.application.layer.domain.api.ApiComponent;
 
 public abstract class MockApiComponent extends ApiComponent {
 
-    private String field;
+	private String field;
 
-    public MockApiComponent(final String field) {
-        this.field = field;
-    }
+	public MockApiComponent(final String field) {
+		this.field = field;
+	}
 
-    /**
-     * @return the field
-     */
-    public String getField() {
-        return field;
-    }
+	/**
+	 * @return the field
+	 */
+	public String getField() {
+		return field;
+	}
 
-    /**
-     * @param field
-     *            the field to set
-     */
-    public void setField(String field) {
-        this.field = field;
-    }
+	/**
+	 * @param field
+	 *            the field to set
+	 */
+	public void setField(String field) {
+		this.field = field;
+	}
 
 }

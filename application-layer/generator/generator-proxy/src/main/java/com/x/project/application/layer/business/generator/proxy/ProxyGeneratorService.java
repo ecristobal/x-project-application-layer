@@ -8,18 +8,17 @@ package com.x.project.application.layer.business.generator.proxy;
  */
 public interface ProxyGeneratorService {
 
-    /**
-     * Creates a proxy service which routes request through a JMS queue.
-     * 
-     * @param <T>
-     *            proxy interface
-     * @param serviceClass
-     *            service to be proxied
-     * @param queueName
-     *            JMS queue which transports the request
-     * 
-     * @return SOAP-JMS proxy
-     */
-    public <T> T createJmsProxy(final Class<T> serviceClass, final String queueName);
+	/**
+	 * Creates a proxy service which routes request through a JMS queue.
+	 * 
+	 * @param <T>
+	 *            proxy interface
+	 * @param serviceClass
+	 *            service to be proxied
+	 * @param queueName
+	 *            JMS queue which transports the request
+	 * @return SOAP-JMS proxy
+	 */
+	public <T> T createJmsProxy(final Class<T> serviceClass, final String queueName);
 
 }
