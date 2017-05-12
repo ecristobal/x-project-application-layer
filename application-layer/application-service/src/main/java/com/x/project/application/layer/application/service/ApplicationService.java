@@ -19,6 +19,7 @@ import com.x.project.application.layer.domain.exception.ServiceException;
  *            parameters
  * @author Esteban Cristóbal
  */
+@FunctionalInterface
 public interface ApplicationService<T extends ApiComponent, V extends ApiComponent> {
 
 	/**

@@ -11,6 +11,7 @@ import com.x.project.application.layer.domain.context.Context;
  * 
  * @author Esteban Cristóbal
  */
+@FunctionalInterface
 public interface ChainHandler {
 
 	/**

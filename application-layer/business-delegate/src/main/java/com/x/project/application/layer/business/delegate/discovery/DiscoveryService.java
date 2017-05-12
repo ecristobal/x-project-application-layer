@@ -6,6 +6,7 @@ package com.x.project.application.layer.business.delegate.discovery;
  * 
  * @author Esteban Cristóbal
  */
+@FunctionalInterface
 public interface DiscoveryService {
 
 	/**

@@ -6,6 +6,7 @@ package com.x.project.application.layer.business.generator.proxy;
  * 
  * @author Esteban Cristóbal
  */
+@FunctionalInterface
 public interface ProxyGeneratorService {
 
 	/**
