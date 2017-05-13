@@ -16,6 +16,10 @@
         <jaxrs:features>
             <bean class="org.apache.cxf.jaxrs.swagger.Swagger2Feature" />
         </jaxrs:features>
+        <jaxrs:properties>
+            <entry key="rs.security.signature.properties" value="classpath:/META-INF/properties/jwt.signature.properties" />
+            <entry key="rs.security.encryption.properties" value="classpath:/META-INF/properties/jwt.encryption.properties" />
+        </jaxrs:properties>
     </jaxrs:server>
 
     <bean id="accessTokenService" class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
@@ -30,7 +34,8 @@
     <bean id="oauthDataProvider" class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
         <property name="accessTokenLifetime" value="300" />
         <property name="recycleRefreshTokens" value="false" />
+        <property name="useJwtFormatForAccessTokens" value="true" />
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
-    
+
 </beans>
