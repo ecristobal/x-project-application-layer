@@ -31,7 +31,7 @@
         </property>
     </bean>
 
-    <bean id="oauthDataProvider" class="org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider">
+    <bean id="oauthDataProvider" class="com.x.project.application.layer.authentication.manager.provider.JwtOauthCustomProvider">
         <property name="accessTokenLifetime" value="300" />
         <property name="recycleRefreshTokens" value="false" />
         <property name="useJwtFormatForAccessTokens" value="true" />

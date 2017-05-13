@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @EnableEurekaClient
 @ImportResource("classpath:/META-INF/spring/authentication-manager*.xml")
-public class AuthenticationManagerApplication {
+public class AuthenticationManagerRunner {
 
 	/**
 	 * Main method.
@@ -22,7 +22,7 @@ public class AuthenticationManagerApplication {
 	 *            program arguments
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(AuthenticationManagerApplication.class, args);
+		SpringApplication.run(AuthenticationManagerRunner.class, args);
 	}
 
 }
