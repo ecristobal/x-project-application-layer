@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-    <bean id="dataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
-        <property name="uniqueResourceName" value="XADBMS" />
-        <property name="xaDataSourceClassName" value="com.mysql.cj.jdbc.MysqlXADataSource" />
-        <property name="xaProperties">
-            <props>
-                <prop key="user">authenticator</prop>
-                <prop key="password">authenticator</prop>
-                <prop key="URL">jdbc:mysql://sonarqube-mysql.cbpq2cxhkzxc.eu-central-1.rds.amazonaws.com:3306/authentication
-                </prop>
-            </props>
-        </property>
-        <property name="poolSize" value="5" />
+    <bean id="dataSource" class="com.mysql.cj.jdbc.MysqlDataSource">
+        <property name="url"
+            value="jdbc:mysql://sonarqube-mysql.cbpq2cxhkzxc.eu-central-1.rds.amazonaws.com:3306/authentication" />
+        <property name="user" value="authenticator" />
+        <property name="password" value="authenticator" />
     </bean>
 
-    <bean id="jpaVendorAdapter"
-        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="database" value="MYSQL" />
     </bean>
 
     <util:properties id="databaseProperties">
-        <prop key="hbm2ddl">validate</prop>
+        <prop key="hibernate.hbm2ddl.auto">validate</prop>
     </util:properties>
 
 </beans>
