@@ -1,4 +1,4 @@
-package com.x.project.application.layer.authentication.manager.configuration;
+package com.x.project.application.layer.authentication.manager.spring;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -49,13 +49,13 @@ public class AuthenticationManagerBeanConfiguration {
         endpoint.setServiceBeans(Arrays.asList(this.accessTokenService()));
         endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
         endpoint.setProvider(new OAuthJSONProvider());
-        final Properties properties = new Properties();
-        properties.load(this.getClass().getResourceAsStream("/properties/jwt.signature.properties"));
-        properties.load(this.getClass().getResourceAsStream("/properties/jwt.encryption.properties"));
-        final Map<String, Object> propertiesMap = new HashMap<>(properties.size());
-        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-            propertiesMap.put(entry.getKey().toString(), entry.getValue());
-        }
+        final Properties signatureProperties = new Properties();
+        signatureProperties.load(this.getClass().getResourceAsStream("/properties/jwt.signature.properties"));
+        final Properties encryptionProperties = new Properties();
+        encryptionProperties.load(this.getClass().getResourceAsStream("/properties/jwt.encryption.properties"));
+        final Map<String, Object> propertiesMap = new HashMap<>(2);
+        propertiesMap.put("rs.security.signature.properties", signatureProperties);
+        propertiesMap.put("rs.security.encryption.properties", encryptionProperties);
         endpoint.setProperties(propertiesMap);
         return endpoint.create();
     }

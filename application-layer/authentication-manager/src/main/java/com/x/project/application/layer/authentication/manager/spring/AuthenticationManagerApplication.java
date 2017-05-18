@@ -1,4 +1,4 @@
-package com.x.project.application.layer.authentication.manager;
+package com.x.project.application.layer.authentication.manager.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +11,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
-public class AuthenticationManagerRunner {
+public class AuthenticationManagerApplication {
 
     /**
      * Main method.
@@ -20,7 +20,7 @@ public class AuthenticationManagerRunner {
      *            program arguments
      */
     public static void main(String[] args) {
-        SpringApplication.run(AuthenticationManagerRunner.class, args);
+        SpringApplication.run(AuthenticationManagerApplication.class, args);
     }
 
 }
