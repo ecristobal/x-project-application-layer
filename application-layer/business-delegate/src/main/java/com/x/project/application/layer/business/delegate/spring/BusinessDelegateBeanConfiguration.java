@@ -1,0 +1,29 @@
+package com.x.project.application.layer.business.delegate.spring;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.x.project.application.layer.business.delegate.discovery.DiscoveryService;
+import com.x.project.application.layer.business.delegate.discovery.DiscoveryServiceImpl;
+
+/**
+ * Business delegate bean definition file.
+ * 
+ * @author Esteban Cristóbal
+ */
+@Configuration
+public class BusinessDelegateBeanConfiguration {
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @Bean
+    public DiscoveryService discoveryService() {
+        final DiscoveryServiceImpl discoveryService = new DiscoveryServiceImpl();
+        discoveryService.setDiscoveryClient(this.discoveryClient);
+        return discoveryService;
+    }
+
+}
