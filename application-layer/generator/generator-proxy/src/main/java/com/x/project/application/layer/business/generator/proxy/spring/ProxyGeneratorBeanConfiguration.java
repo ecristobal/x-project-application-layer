@@ -2,7 +2,6 @@ package com.x.project.application.layer.business.generator.proxy.spring;
 
 import javax.jms.ConnectionFactory;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,7 +17,7 @@ import com.x.project.application.layer.business.generator.proxy.ProxyGeneratorSe
 public class ProxyGeneratorBeanConfiguration {
 
     @Bean
-    public ProxyGeneratorService proxyGeneratorService(@Autowired final ConnectionFactory connectionFactory) {
+    public ProxyGeneratorService proxyGeneratorService(final ConnectionFactory connectionFactory) {
         final ProxyGeneratorServiceImpl proxyGeneratorService = new ProxyGeneratorServiceImpl();
         proxyGeneratorService.setConnectionFactory(connectionFactory);
         return proxyGeneratorService;

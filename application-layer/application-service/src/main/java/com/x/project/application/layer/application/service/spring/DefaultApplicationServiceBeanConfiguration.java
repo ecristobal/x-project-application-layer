@@ -1,6 +1,5 @@
 package com.x.project.application.layer.application.service.spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
 import com.x.project.application.layer.application.service.ApplicationService;
@@ -18,8 +17,8 @@ import com.x.project.application.layer.domain.api.ApiComponent;
 public abstract class DefaultApplicationServiceBeanConfiguration<T extends ApiComponent, V extends ApiComponent> {
 
     @Bean
-    public ApplicationService<T, V> applicationService(@Autowired final AbstractBusinessDelegate<T, V> businessDelegate,
-            @Autowired final ChainManager preactionsChain, @Autowired final ChainManager postactionsChain) {
+    public ApplicationService<T, V> applicationService(final AbstractBusinessDelegate<T, V> businessDelegate,
+            final ChainManager preactionsChain, final ChainManager postactionsChain) {
         final ApplicationServiceImpl<T, V> applicationService = new ApplicationServiceImpl<>();
         applicationService.setBusinessDelegate(businessDelegate);
         applicationService.setPreactionsChain(preactionsChain);

@@ -16,7 +16,6 @@ import org.apache.cxf.rs.security.oauth2.grants.clientcred.ClientCredentialsGran
 import org.apache.cxf.rs.security.oauth2.provider.OAuthDataProvider;
 import org.apache.cxf.rs.security.oauth2.provider.OAuthJSONProvider;
 import org.apache.cxf.rs.security.oauth2.services.AccessTokenService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,8 +35,7 @@ import com.x.project.application.layer.authentication.manager.provider.JwtOauthC
 public class AuthenticationManagerBeanConfiguration {
 
     @Bean
-    public Server restServer(@Autowired final Bus bus, @Autowired final AccessTokenService accessTokenService)
-            throws IOException {
+    public Server restServer(final Bus bus, final AccessTokenService accessTokenService) throws IOException {
         JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
         endpoint.setBus(bus);
         endpoint.setAddress("/oauth");
@@ -56,7 +54,7 @@ public class AuthenticationManagerBeanConfiguration {
     }
 
     @Bean
-    public AccessTokenService accessTokenService(@Autowired final OAuthDataProvider oAuthDataProvider) {
+    public AccessTokenService accessTokenService(final OAuthDataProvider oAuthDataProvider) {
         final AccessTokenService accessTokenService = new AccessTokenService();
         accessTokenService.setDataProvider(oAuthDataProvider);
         final ClientCredentialsGrantHandler clientCredentialsGrantHandler = new ClientCredentialsGrantHandler();
@@ -66,7 +64,7 @@ public class AuthenticationManagerBeanConfiguration {
     }
 
     @Bean
-    public OAuthDataProvider oauthDataProvider(@Autowired final EntityManagerFactory entityManagerFactory) {
+    public OAuthDataProvider oauthDataProvider(final EntityManagerFactory entityManagerFactory) {
         final JwtOauthCustomProvider oAuthDataProvider = new JwtOauthCustomProvider();
         oAuthDataProvider.setAccessTokenLifetime(300L);
         oAuthDataProvider.setRecycleRefreshTokens(true);

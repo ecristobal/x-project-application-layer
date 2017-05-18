@@ -1,6 +1,5 @@
 package com.x.project.application.layer.business.delegate.spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +16,7 @@ import com.x.project.application.layer.business.delegate.discovery.DiscoveryServ
 public class BusinessDelegateBeanConfiguration {
 
     @Bean
-    public DiscoveryService discoveryService(@Autowired final DiscoveryClient discoveryClient) {
+    public DiscoveryService discoveryService(final DiscoveryClient discoveryClient) {
         final DiscoveryServiceImpl discoveryService = new DiscoveryServiceImpl();
         discoveryService.setDiscoveryClient(discoveryClient);
         return discoveryService;
