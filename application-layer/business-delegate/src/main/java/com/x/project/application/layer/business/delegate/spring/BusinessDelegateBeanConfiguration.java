@@ -16,13 +16,10 @@ import com.x.project.application.layer.business.delegate.discovery.DiscoveryServ
 @Configuration
 public class BusinessDelegateBeanConfiguration {
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
-
     @Bean
-    public DiscoveryService discoveryService() {
+    public DiscoveryService discoveryService(@Autowired final DiscoveryClient discoveryClient) {
         final DiscoveryServiceImpl discoveryService = new DiscoveryServiceImpl();
-        discoveryService.setDiscoveryClient(this.discoveryClient);
+        discoveryService.setDiscoveryClient(discoveryClient);
         return discoveryService;
     }
 

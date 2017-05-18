@@ -17,13 +17,10 @@ import com.x.project.application.layer.business.generator.proxy.ProxyGeneratorSe
 @Configuration
 public class ProxyGeneratorBeanConfiguration {
 
-    @Autowired
-    private ConnectionFactory connectionFactory;
-
     @Bean
-    public ProxyGeneratorService proxyGeneratorService() {
+    public ProxyGeneratorService proxyGeneratorService(@Autowired final ConnectionFactory connectionFactory) {
         final ProxyGeneratorServiceImpl proxyGeneratorService = new ProxyGeneratorServiceImpl();
-        proxyGeneratorService.setConnectionFactory(this.connectionFactory);
+        proxyGeneratorService.setConnectionFactory(connectionFactory);
         return proxyGeneratorService;
     }
 

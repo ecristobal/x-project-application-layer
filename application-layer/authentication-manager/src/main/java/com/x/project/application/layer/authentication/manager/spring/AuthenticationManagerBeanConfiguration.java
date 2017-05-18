@@ -35,18 +35,13 @@ import com.x.project.application.layer.authentication.manager.provider.JwtOauthC
         "org.apache.cxf.rs.security.oauth2.tokens" })
 public class AuthenticationManagerBeanConfiguration {
 
-    @Autowired
-    private EntityManagerFactory entityManagerFactory;
-
-    @Autowired
-    private Bus bus;
-
     @Bean
-    public Server restServer() throws IOException {
+    public Server restServer(@Autowired final Bus bus, @Autowired final AccessTokenService accessTokenService)
+            throws IOException {
         JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
         endpoint.setBus(bus);
         endpoint.setAddress("/oauth");
-        endpoint.setServiceBeans(Arrays.asList(this.accessTokenService()));
+        endpoint.setServiceBeans(Arrays.asList(accessTokenService));
         endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
         endpoint.setProvider(new OAuthJSONProvider());
         final Properties signatureProperties = new Properties();
@@ -61,22 +56,22 @@ public class AuthenticationManagerBeanConfiguration {
     }
 
     @Bean
-    public AccessTokenService accessTokenService() {
+    public AccessTokenService accessTokenService(@Autowired final OAuthDataProvider oAuthDataProvider) {
         final AccessTokenService accessTokenService = new AccessTokenService();
-        accessTokenService.setDataProvider(this.oauthDataProvider());
+        accessTokenService.setDataProvider(oAuthDataProvider);
         final ClientCredentialsGrantHandler clientCredentialsGrantHandler = new ClientCredentialsGrantHandler();
-        clientCredentialsGrantHandler.setDataProvider(this.oauthDataProvider());
+        clientCredentialsGrantHandler.setDataProvider(oAuthDataProvider);
         accessTokenService.setGrantHandler(clientCredentialsGrantHandler);
         return accessTokenService;
     }
 
     @Bean
-    public OAuthDataProvider oauthDataProvider() {
+    public OAuthDataProvider oauthDataProvider(@Autowired final EntityManagerFactory entityManagerFactory) {
         final JwtOauthCustomProvider oAuthDataProvider = new JwtOauthCustomProvider();
         oAuthDataProvider.setAccessTokenLifetime(300L);
         oAuthDataProvider.setRecycleRefreshTokens(true);
         oAuthDataProvider.setUseJwtFormatForAccessTokens(true);
-        oAuthDataProvider.setEntityManagerFactory(this.entityManagerFactory);
+        oAuthDataProvider.setEntityManagerFactory(entityManagerFactory);
         return oAuthDataProvider;
     }
 
