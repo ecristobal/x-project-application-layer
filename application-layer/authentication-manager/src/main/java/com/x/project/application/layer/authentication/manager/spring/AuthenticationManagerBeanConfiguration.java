@@ -34,6 +34,15 @@ import com.x.project.application.layer.authentication.manager.provider.JwtOauthC
         "org.apache.cxf.rs.security.oauth2.tokens" })
 public class AuthenticationManagerBeanConfiguration {
 
+    /**
+     * @param bus
+     *            CXF {@link Bus} where the REST service is going to be deployed
+     * @param accessTokenService
+     *            REST service controller to be published
+     * @return {@link Server} instance
+     * @throws IOException
+     *             in case of problems reading properties file
+     */
     @Bean
     public Server restServer(final Bus bus, final AccessTokenService accessTokenService) throws IOException {
         JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
@@ -46,13 +55,18 @@ public class AuthenticationManagerBeanConfiguration {
         properties.load(this.getClass().getResourceAsStream("/properties/jwt.signature.properties"));
         properties.load(this.getClass().getResourceAsStream("/properties/jwt.encryption.properties"));
         final Map<String, Object> propertiesMap = new HashMap<>(properties.size());
-        for(Map.Entry<Object, Object> entry : properties.entrySet()) {
+        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
             propertiesMap.put(entry.getKey().toString(), entry.getValue());
         }
         endpoint.setProperties(propertiesMap);
         return endpoint.create();
     }
 
+    /**
+     * @param oAuthDataProvider
+     *            {@link OAuthDataProvider} instance
+     * @return {@link AccessTokenService} instance
+     */
     @Bean
     public AccessTokenService accessTokenService(final OAuthDataProvider oAuthDataProvider) {
         final AccessTokenService accessTokenService = new AccessTokenService();
@@ -63,6 +77,11 @@ public class AuthenticationManagerBeanConfiguration {
         return accessTokenService;
     }
 
+    /**
+     * @param entityManagerFactory
+     *            {@link EntityManagerFactory} instance
+     * @return {@link OAuthDataProvider} instance
+     */
     @Bean
     public OAuthDataProvider oauthDataProvider(final EntityManagerFactory entityManagerFactory) {
         final JwtOauthCustomProvider oAuthDataProvider = new JwtOauthCustomProvider();
