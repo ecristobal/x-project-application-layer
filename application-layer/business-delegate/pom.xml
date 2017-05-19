@@ -33,7 +33,7 @@
         <!-- Spring cloud dependencies -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-commons</artifactId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
         <!-- Test dependencies -->
         <dependency>
