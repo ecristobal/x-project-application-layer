@@ -30,7 +30,7 @@
         <!-- Docker image prefix -->
         <docker.image.prefix>application-layer</docker.image.prefix>
         <!-- SonarQube configuration -->
-        <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+<!--         <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath> -->
     </properties>
 
     <scm>
