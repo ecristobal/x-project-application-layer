@@ -19,10 +19,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.x.project.application.layer.business.delegate.spring.BusinessDelegateBeanConfiguration;
-import com.x.project.application.layer.business.delegate.spring.BusinessDelegateMockConfiguration;
+import com.x.project.application.layer.business.delegate.spring.BusinessDelegateTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { BusinessDelegateBeanConfiguration.class, BusinessDelegateMockConfiguration.class })
+@ContextConfiguration(classes = { BusinessDelegateBeanConfiguration.class, BusinessDelegateTestConfiguration.class })
 public class DiscoveryServiceTest {
 
     @Resource(name = "discoveryClient")
