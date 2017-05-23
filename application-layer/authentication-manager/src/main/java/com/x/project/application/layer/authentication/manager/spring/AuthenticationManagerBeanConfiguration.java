@@ -62,6 +62,11 @@ public class AuthenticationManagerBeanConfiguration {
         return endpoint.create();
     }
 
+    /**
+     * @param oAuthDataProvider
+     *            CXF {@link OAuthDataProvider} instance
+     * @return CXF {@link AccessTokenService} instance
+     */
     @Bean
     public AccessTokenService accessTokenService(final OAuthDataProvider oAuthDataProvider) {
         final AccessTokenService accessTokenService = new AccessTokenService();
@@ -72,6 +77,11 @@ public class AuthenticationManagerBeanConfiguration {
         return accessTokenService;
     }
 
+    /**
+     * @param entityManagerFactory
+     *            JPA {@link EntityManagerFactory} instance
+     * @return CXF {@link OAuthDataProvider} instance
+     */
     @Bean
     public OAuthDataProvider oauthDataProvider(final EntityManagerFactory entityManagerFactory) {
         final JwtOauthCustomProvider oAuthDataProvider = new JwtOauthCustomProvider();
