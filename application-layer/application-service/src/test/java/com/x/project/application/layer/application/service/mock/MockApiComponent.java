@@ -2,7 +2,7 @@ package com.x.project.application.layer.application.service.mock;
 
 import com.x.project.application.layer.domain.api.ApiComponent;
 
-public abstract class MockApiComponent implements ApiComponent {
+public class MockApiComponent implements ApiComponent {
 
 	private String field;
 

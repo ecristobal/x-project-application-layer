@@ -51,7 +51,7 @@ public class ApplicationServiceImpl<T extends ApiComponent, V extends ApiCompone
 		LOGGER.debug("Successfully executed preactions for request {}", requestId);
 		// Business logic execution
 		LOGGER.debug("Running business logic for request {}", requestId);
-		final V response = this.businessDelegate.execute(inputParamters, requestId);
+		final V response = this.businessDelegate.execute((T) context.getRequestParameters(), requestId);
 		LOGGER.debug("Successfully executed business logic for request {}", requestId);
 		// Context update with business logic results and postactions execution
 		context.setResponseParameters(response);

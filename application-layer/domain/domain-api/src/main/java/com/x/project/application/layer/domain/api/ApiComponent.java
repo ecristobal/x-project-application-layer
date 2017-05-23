@@ -2,6 +2,7 @@ package com.x.project.application.layer.domain.api;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -22,6 +23,7 @@ public interface ApiComponent {
 	 * @return {@link Map} representation of fields contained on API
 	 */
 	@SuppressWarnings("unchecked")
+	@JsonIgnore
 	public default Map<String, Object> getParameterMap() {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.convertValue(this, Map.class);
