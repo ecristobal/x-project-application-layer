@@ -34,6 +34,15 @@ import com.x.project.application.layer.authentication.manager.provider.JwtOauthC
         "org.apache.cxf.rs.security.oauth2.tokens" })
 public class AuthenticationManagerBeanConfiguration {
 
+    /**
+     * @param bus
+     *            CXF {@link Bus} instance
+     * @param accessTokenService
+     *            CXF {@link AccessTokenService} instance
+     * @return CXF {@link Server} instance
+     * @throws IOException
+     *             in case of problems reading properties files
+     */
     @Bean
     public Server restServer(final Bus bus, final AccessTokenService accessTokenService) throws IOException {
         JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
