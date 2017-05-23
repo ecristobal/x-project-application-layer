@@ -22,9 +22,6 @@ import com.x.project.application.layer.domain.api.ApiComponent;
 @Configuration
 public class DefaultApplicationServiceBeanConfiguration<T extends ApiComponent, V extends ApiComponent> {
 
-    /**
-     * @return {@link ApplicationService} instance
-     */
     @Bean
     public ApplicationService<T, V> applicationService(final AbstractBusinessDelegate<T, V> businessDelegate,
             final ChainManager preactionsChain, final ChainManager postactionsChain) {

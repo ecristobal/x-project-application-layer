@@ -424,6 +424,9 @@
                                 <goal>integration-test</goal>
                                 <goal>verify</goal>
                             </goals>
+                            <configuration>
+                                <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>

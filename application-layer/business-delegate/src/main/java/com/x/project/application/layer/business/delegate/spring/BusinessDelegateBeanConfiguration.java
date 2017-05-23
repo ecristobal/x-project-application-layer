@@ -15,11 +15,6 @@ import com.x.project.application.layer.business.delegate.discovery.DiscoveryServ
 @Configuration
 public class BusinessDelegateBeanConfiguration {
 
-    /**
-     * @param discoveryClient
-     *            {@link DiscoveryClient} instance
-     * @return {@link DiscoveryService} instance
-     */
     @Bean
     public DiscoveryService discoveryService(final DiscoveryClient discoveryClient) {
         final DiscoveryServiceImpl discoveryService = new DiscoveryServiceImpl();
