@@ -1,10 +1,9 @@
 package com.x.project.application.layer.business.generator.proxy;
 
-import javax.annotation.Resource;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,7 +15,7 @@ import com.x.project.application.layer.business.generator.spring.ProxyGeneratorM
 @ContextConfiguration(classes = { ProxyGeneratorBeanConfiguration.class, ProxyGeneratorMockConfiguration.class })
 public class ProxyGeneratorServiceTest {
 
-    @Resource(name = "proxyGeneratorService")
+    @Autowired
     private ProxyGeneratorService proxyGeneratorService;
 
     @Test

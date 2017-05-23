@@ -7,12 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.Resource;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,10 +24,10 @@ import com.x.project.application.layer.business.delegate.spring.BusinessDelegate
 @ContextConfiguration(classes = { BusinessDelegateBeanConfiguration.class, BusinessDelegateTestConfiguration.class })
 public class DiscoveryServiceTest {
 
-    @Resource(name = "discoveryClient")
+    @Autowired
     private DiscoveryClient discoveryClient;
 
-    @Resource(name = "discoveryService")
+    @Autowired
     private DiscoveryService discoveryService;
 
     @Test
