@@ -10,11 +10,11 @@
         <module>chain</module>
         <module>application-service</module>
         <module>business-delegate</module>
-        <module>authentication-manager</module>
         <module>logging-configuration</module>
         <module>service-registry</module>
         <module>domain</module>
         <module>generator</module>
+        <module>security</module>
     </modules>
 
     <properties>
