@@ -1,4 +1,4 @@
-package com.x.project.application.layer.authentication.manager.spring;
+package com.x.project.application.layer.security.authentication.manager.spring;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.x.project.application.layer.authentication.manager.provider.JwtOauthCustomProvider;
+import com.x.project.application.layer.security.authentication.manager.provider.JwtOauthCustomProvider;
 
 /**
  * Spring bean configuration class.

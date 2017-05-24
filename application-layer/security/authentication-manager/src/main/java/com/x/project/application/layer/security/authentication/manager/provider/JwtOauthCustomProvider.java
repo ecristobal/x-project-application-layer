@@ -1,4 +1,4 @@
-package com.x.project.application.layer.authentication.manager.provider;
+package com.x.project.application.layer.security.authentication.manager.provider;
 
 import org.apache.cxf.rs.security.jose.jwt.JwtClaims;
 import org.apache.cxf.rs.security.oauth2.common.ServerAccessToken;

@@ -1,4 +1,4 @@
-package com.x.project.application.layer.authentication.manager.spring;
+package com.x.project.application.layer.security.authentication.manager.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

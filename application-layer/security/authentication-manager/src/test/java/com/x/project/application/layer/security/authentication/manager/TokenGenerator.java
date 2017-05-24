@@ -1,4 +1,4 @@
-package com.x.project.application.layer.authentication.manager;
+package com.x.project.application.layer.security.authentication.manager;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
