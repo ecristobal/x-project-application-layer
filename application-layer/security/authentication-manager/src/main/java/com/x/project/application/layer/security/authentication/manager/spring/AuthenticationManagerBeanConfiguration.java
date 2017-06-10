@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.x.project.application.layer.security.authentication.manager.provider.JwtOauthCustomProvider;
+import com.x.project.application.layer.security.authentication.manager.provider.JwtOauthSpringSecurityProvider;
 
 /**
  * Spring bean configuration class.
@@ -84,11 +84,10 @@ public class AuthenticationManagerBeanConfiguration {
      */
     @Bean
     public OAuthDataProvider oauthDataProvider(final EntityManagerFactory entityManagerFactory) {
-        final JwtOauthCustomProvider oAuthDataProvider = new JwtOauthCustomProvider();
+        final JwtOauthSpringSecurityProvider oAuthDataProvider = new JwtOauthSpringSecurityProvider();
         oAuthDataProvider.setAccessTokenLifetime(300L);
         oAuthDataProvider.setRecycleRefreshTokens(true);
         oAuthDataProvider.setUseJwtFormatForAccessTokens(true);
-        oAuthDataProvider.setEntityManagerFactory(entityManagerFactory);
         return oAuthDataProvider;
     }
 
