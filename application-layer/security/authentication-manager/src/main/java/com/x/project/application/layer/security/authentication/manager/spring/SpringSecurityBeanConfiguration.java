@@ -13,6 +13,11 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
+/**
+ * Spring bean configuration class.
+ * 
+ * @author Esteban Cristóbal
+ */
 @Configuration
 public class SpringSecurityBeanConfiguration {
 

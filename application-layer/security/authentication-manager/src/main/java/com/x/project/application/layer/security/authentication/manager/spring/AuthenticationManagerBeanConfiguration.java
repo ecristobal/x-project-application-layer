@@ -29,15 +29,6 @@ public class AuthenticationManagerBeanConfiguration {
     @Value("${token.validity.seconds}")
     private int tokenValidity;
 
-    /**
-     * @param bus
-     *            CXF {@link Bus} instance
-     * @param accessTokenService
-     *            CXF {@link AccessTokenService} instance
-     * @return CXF {@link Server} instance
-     * @throws IOException
-     *             in case of problems reading properties files
-     */
     @Bean
     public Server restServer(final Bus bus, final AccessTokenService accessTokenService) throws IOException {
         final JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
@@ -49,11 +40,6 @@ public class AuthenticationManagerBeanConfiguration {
         return endpoint.create();
     }
 
-    /**
-     * @param oAuthDataProvider
-     *            CXF {@link OAuthDataProvider} instance
-     * @return CXF {@link AccessTokenService} instance
-     */
     @Bean
     public AccessTokenService accessTokenService(final OAuthDataProvider oAuthDataProvider) {
         final AccessTokenService accessTokenService = new AccessTokenService();
@@ -64,11 +50,6 @@ public class AuthenticationManagerBeanConfiguration {
         return accessTokenService;
     }
 
-    /**
-     * @param entityManagerFactory
-     *            JPA {@link EntityManagerFactory} instance
-     * @return CXF {@link OAuthDataProvider} instance
-     */
     @Bean
     public OAuthDataProvider oauthDataProvider(final AuthorizationServerTokenServices tokenServices) {
         final JwtOauthSpringSecurityProvider oAuthDataProvider = new JwtOauthSpringSecurityProvider();
