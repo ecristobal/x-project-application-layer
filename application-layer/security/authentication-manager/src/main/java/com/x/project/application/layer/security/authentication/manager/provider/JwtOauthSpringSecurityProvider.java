@@ -2,7 +2,6 @@ package com.x.project.application.layer.security.authentication.manager.provider
 
 import java.util.List;
 
-import org.apache.cxf.rs.security.jose.jwt.JwtClaims;
 import org.apache.cxf.rs.security.oauth2.common.Client;
 import org.apache.cxf.rs.security.oauth2.common.ServerAccessToken;
 import org.apache.cxf.rs.security.oauth2.common.UserSubject;
@@ -10,6 +9,9 @@ import org.apache.cxf.rs.security.oauth2.provider.AbstractOAuthDataProvider;
 import org.apache.cxf.rs.security.oauth2.provider.JPAOAuthDataProvider;
 import org.apache.cxf.rs.security.oauth2.provider.OAuthServiceException;
 import org.apache.cxf.rs.security.oauth2.tokens.refresh.RefreshToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 
 /**
  * Class that extends {@link JPAOAuthDataProvider} to add custom fields (called
@@ -20,19 +22,9 @@ import org.apache.cxf.rs.security.oauth2.tokens.refresh.RefreshToken;
  */
 public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.apache.cxf.rs.security.oauth2.provider.AbstractOAuthDataProvider#
-     * createJwtAccessToken(org.apache.cxf.rs.
-     * security.oauth2.common.ServerAccessToken)
-     */
-    @Override
-    protected JwtClaims createJwtAccessToken(ServerAccessToken at) {
-        final JwtClaims jwtClaims = super.createJwtAccessToken(at);
-        // TODO Add custom claims to JWT token
-        return jwtClaims;
-    }
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtOauthSpringSecurityProvider.class);
+
+    private AuthorizationServerTokenServices tokenServices;
 
     /*
      * (non-Javadoc)
@@ -161,6 +153,14 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
     @Override
     protected void doRemoveClient(Client c) {
         // TODO Auto-generated method stub
+    }
+
+    /**
+     * @param tokenServices
+     *            the tokenServices to set
+     */
+    public void setTokenServices(AuthorizationServerTokenServices tokenServices) {
+        this.tokenServices = tokenServices;
     }
 
 }
