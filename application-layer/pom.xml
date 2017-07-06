@@ -11,7 +11,6 @@
         <module>application-service</module>
         <module>business-delegate</module>
         <module>logging-configuration</module>
-        <module>service-registry</module>
         <module>domain</module>
         <module>generator</module>
         <module>security</module>
@@ -24,7 +23,6 @@
         <log4j.version>2.8.2</log4j.version>
         <spring.boot.version>1.5.4.RELEASE</spring.boot.version>
         <cxf.version>3.1.11</cxf.version>
-        <eureka.version>1.3.1.RELEASE</eureka.version>
         <activemq.version>5.14.3</activemq.version>
         <atomikos.version>4.0.4</atomikos.version>
         <!-- Docker image prefix -->
@@ -178,12 +176,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-eureka</artifactId>
-                <version>${eureka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-eureka-server</artifactId>
-                <version>${eureka.version}</version>
+                <version>1.3.1.RELEASE</version>
             </dependency>
             <!-- Apache CXF dependencies -->
             <dependency>
