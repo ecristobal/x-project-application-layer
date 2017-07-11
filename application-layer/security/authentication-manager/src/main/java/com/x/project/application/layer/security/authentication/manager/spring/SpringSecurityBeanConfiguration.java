@@ -24,7 +24,7 @@ public class SpringSecurityBeanConfiguration {
     @Value("${token.validity.seconds}")
     private int tokenValidity;
 
-    @Value("${keystore.password")
+    @Value("${keystore.password}")
     private char[] keystorePassword;
 
     @Bean
