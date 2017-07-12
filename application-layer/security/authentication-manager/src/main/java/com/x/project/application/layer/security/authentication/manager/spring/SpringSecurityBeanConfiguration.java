@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -42,7 +42,7 @@ public class SpringSecurityBeanConfiguration {
     }
 
     @Bean
-    public AuthorizationServerTokenServices tokenServices(final TokenStore tokenStore,
+    public DefaultTokenServices tokenServices(final TokenStore tokenStore,
             final AuthenticationManager authenticationManager, final ClientDetailsService clientDetailsService) {
         final DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore);
