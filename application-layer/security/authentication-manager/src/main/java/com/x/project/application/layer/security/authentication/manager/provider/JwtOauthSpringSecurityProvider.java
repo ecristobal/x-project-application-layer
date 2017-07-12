@@ -11,7 +11,7 @@ import org.apache.cxf.rs.security.oauth2.provider.OAuthServiceException;
 import org.apache.cxf.rs.security.oauth2.tokens.refresh.RefreshToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 
 /**
  * Class that extends {@link JPAOAuthDataProvider} to add custom fields (called
@@ -24,7 +24,7 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtOauthSpringSecurityProvider.class);
 
-    private AuthorizationServerTokenServices tokenServices;
+    private DefaultTokenServices tokenServices;
 
     /*
      * (non-Javadoc)
@@ -159,7 +159,7 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
      * @param tokenServices
      *            the tokenServices to set
      */
-    public void setTokenServices(AuthorizationServerTokenServices tokenServices) {
+    public void setTokenServices(DefaultTokenServices tokenServices) {
         this.tokenServices = tokenServices;
     }
 
