@@ -1,5 +1,9 @@
 package com.x.project.application.layer.business.generator.proxy;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,22 +11,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 import com.x.project.application.layer.business.generator.proxy.spring.ProxyGeneratorBeanConfiguration;
-import com.x.project.application.layer.business.generator.spring.ProxyGeneratorMockConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ProxyGeneratorBeanConfiguration.class, ProxyGeneratorMockConfiguration.class })
+@ContextConfiguration(classes = { ProxyGeneratorBeanConfiguration.class })
 public class ProxyGeneratorServiceTest {
 
     @Autowired
     private ProxyGeneratorService proxyGeneratorService;
 
     @Test
-    public void testCreateJmsProxy() {
-        final List proxyService = this.proxyGeneratorService.createJmsProxy(List.class, "test");
+    public void testCreateProxy() {
+        final TestRestService proxyService = this.proxyGeneratorService.createProxy(TestRestService.class, "test");
         Assert.assertNotNull(proxyService);
-        Assert.assertTrue(proxyService instanceof List);
+        Assert.assertTrue(proxyService instanceof TestRestService);
+    }
+    
+    @Path("/test")
+    private interface TestRestService {
+        
+        @GET
+        public void method(final @PathParam("param") String parameter);
     }
 
 }

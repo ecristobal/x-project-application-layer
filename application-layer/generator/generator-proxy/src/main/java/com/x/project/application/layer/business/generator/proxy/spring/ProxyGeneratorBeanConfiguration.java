@@ -1,7 +1,5 @@
 package com.x.project.application.layer.business.generator.proxy.spring;
 
-import javax.jms.ConnectionFactory;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,15 +15,11 @@ import com.x.project.application.layer.business.generator.proxy.ProxyGeneratorSe
 public class ProxyGeneratorBeanConfiguration {
 
     /**
-     * @param connectionFactory
-     *            JMS {@link ConnectionFactory}
      * @return {@link ProxyGeneratorService} instance
      */
     @Bean
-    public ProxyGeneratorService proxyGeneratorService(final ConnectionFactory connectionFactory) {
-        final ProxyGeneratorServiceImpl proxyGeneratorService = new ProxyGeneratorServiceImpl();
-        proxyGeneratorService.setConnectionFactory(connectionFactory);
-        return proxyGeneratorService;
+    public ProxyGeneratorService proxyGeneratorService() {
+        return new ProxyGeneratorServiceImpl();
     }
 
 }
