@@ -36,29 +36,29 @@
     <repositories>
         <repository>
             <id>nexus-dependencies</id>
-            <url>http://52.57.20.226:8082/repository/maven-public/</url>
+            <url>http://localhost:8081/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>nexus-snapshot</id>
-            <url>http://52.57.20.226:8082/repository/maven-snapshots/</url>
+            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
             <id>nexus-dependencies</id>
-            <url>http://52.57.20.226:8082/repository/maven-public/</url>
+            <url>http://localhost:8081/nexus/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
 
     <distributionManagement>
         <snapshotRepository>
             <id>nexus-snapshot</id>
-            <url>http://52.57.20.226:8082/repository/maven-snapshots/</url>
+            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>nexus-release</id>
-            <url>http://52.57.20.226:8082/repository/maven-releases/</url>
+            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
 
