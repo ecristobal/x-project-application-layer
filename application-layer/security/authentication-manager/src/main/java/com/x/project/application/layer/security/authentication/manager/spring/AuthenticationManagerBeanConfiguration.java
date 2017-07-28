@@ -14,7 +14,8 @@ import org.apache.cxf.rs.security.oauth2.services.AccessTokenService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 
 import com.x.project.application.layer.security.authentication.manager.provider.JwtOauthSpringSecurityProvider;
 
@@ -51,12 +52,14 @@ public class AuthenticationManagerBeanConfiguration {
     }
 
     @Bean
-    public OAuthDataProvider oauthDataProvider(final DefaultTokenServices tokenServices) {
+    public OAuthDataProvider oauthDataProvider(final TokenStore tokenStore,
+            final ClientDetailsService clientDetailsService) {
         final JwtOauthSpringSecurityProvider oAuthDataProvider = new JwtOauthSpringSecurityProvider();
         oAuthDataProvider.setAccessTokenLifetime(this.tokenValidity);
         oAuthDataProvider.setRecycleRefreshTokens(true);
         oAuthDataProvider.setUseJwtFormatForAccessTokens(true);
-        oAuthDataProvider.setTokenServices(tokenServices);
+        oAuthDataProvider.setTokenStore(tokenStore);
+        oAuthDataProvider.setClientDetailsService(clientDetailsService);
         return oAuthDataProvider;
     }
 

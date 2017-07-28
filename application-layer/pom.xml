@@ -32,35 +32,6 @@
         <developerConnection>scm:git:https://github.com/ecristobal/x-project-application-layer.git</developerConnection>
     </scm>
 
-    <repositories>
-        <repository>
-            <id>nexus-dependencies</id>
-            <url>http://localhost:8081/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>nexus-snapshot</id>
-            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus-dependencies</id>
-            <url>http://localhost:8081/nexus/content/groups/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshot</id>
-            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus-release</id>
-            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
-        </repository>
-    </distributionManagement>
-
     <dependencies>
         <!-- Logging dependencies -->
         <dependency>

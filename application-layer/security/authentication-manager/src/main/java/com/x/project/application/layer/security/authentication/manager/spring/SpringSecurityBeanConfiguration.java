@@ -4,10 +4,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
+import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler;
+import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -19,7 +24,8 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
  * @author Esteban Cristóbal
  */
 @Configuration
-public class SpringSecurityBeanConfiguration {
+@EnableWebSecurity
+public class SpringSecurityBeanConfiguration extends WebSecurityConfigurerAdapter {
 
     @Value("${token.validity.seconds}")
     private int tokenValidity;
@@ -33,6 +39,23 @@ public class SpringSecurityBeanConfiguration {
     }
 
     @Bean
+    public TokenStoreUserApprovalHandler userApprovalHandler(final TokenStore tokenStore,
+            final ClientDetailsService clientDetailsService) {
+        final TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
+        handler.setTokenStore(tokenStore);
+        handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService));
+        handler.setClientDetailsService(clientDetailsService);
+        return handler;
+    }
+
+    @Bean
+    public ApprovalStore approvalStore(TokenStore tokenStore) {
+        TokenApprovalStore store = new TokenApprovalStore();
+        store.setTokenStore(tokenStore);
+        return store;
+    }
+
+    @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         final KeyStoreKeyFactory keyFactory = new KeyStoreKeyFactory(new ClassPathResource("/key/keystore.jks"),
@@ -41,28 +64,14 @@ public class SpringSecurityBeanConfiguration {
         return converter;
     }
 
-    @Bean
-    public DefaultTokenServices tokenServices(final TokenStore tokenStore,
-            final AuthenticationManager authenticationManager, final ClientDetailsService clientDetailsService) {
-        final DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(tokenStore);
-        defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setRefreshTokenValiditySeconds(this.tokenValidity);
-        defaultTokenServices.setAuthenticationManager(authenticationManager);
-        defaultTokenServices.setClientDetailsService(clientDetailsService);
-        return defaultTokenServices;
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("esteban").password("e1234").roles("USER");
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager() {
-        // TODO Implement authentication manager
-        return null;
-    }
-
-    @Bean
-    public ClientDetailsService clientDetailsService() {
-        // Implement client details service
-        return null;
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //http.csrf().disable().anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
     }
 
 }
