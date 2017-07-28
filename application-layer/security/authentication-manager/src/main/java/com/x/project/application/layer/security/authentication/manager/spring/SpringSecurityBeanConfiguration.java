@@ -71,7 +71,7 @@ public class SpringSecurityBeanConfiguration extends WebSecurityConfigurerAdapte
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //http.csrf().disable().anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
+        // http.csrf().disable().anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
     }
 
 }
