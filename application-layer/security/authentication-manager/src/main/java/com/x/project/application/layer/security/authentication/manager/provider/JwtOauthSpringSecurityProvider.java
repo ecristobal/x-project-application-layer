@@ -80,8 +80,16 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
      */
     @Override
     public List<RefreshToken> getRefreshTokens(Client client, UserSubject subject) throws OAuthServiceException {
-        // TODO Auto-generated method stub
-        return null;
+        final String clientId = client.getClientId();
+        LOGGER.debug("Looking for refresh tokens for client with id {}", clientId);
+        final Collection<OAuth2AccessToken> accessTokens = this.tokenStore.findTokensByClientId(clientId);
+        final ClientDetails clientDetails = this.clientDetailsService.loadClientByClientId(clientId);
+        final List<RefreshToken> refreshTokens = new ArrayList<>(accessTokens.size());
+        for (OAuth2AccessToken accessToken : accessTokens) {
+            refreshTokens.add(this.build(accessToken.getRefreshToken(), clientDetails));
+        }
+        LOGGER.debug("Successfully got refresh token list for client with id {}", clientId);
+        return refreshTokens;
     }
 
     /*
@@ -112,8 +120,12 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
      * oauth2.common.ServerAccessToken)
      */
     @Override
-    protected void saveAccessToken(ServerAccessToken serverToken) {
-        // TODO Auto-generated method stub
+    protected void saveAccessToken(ServerAccessToken cxfAccessToken) {
+        LOGGER.debug("Trying to save access token");
+        final OAuth2AccessToken accessToken = this.build(cxfAccessToken);
+        final OAuth2Authentication authentication = this.tokenStore.readAuthentication(accessToken);
+        this.tokenStore.storeAccessToken(accessToken, authentication);
+        LOGGER.debug("Successfully saved access token");
     }
 
     /*
@@ -123,8 +135,12 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
      * oauth2.tokens.refresh.RefreshToken)
      */
     @Override
-    protected void saveRefreshToken(RefreshToken refreshToken) {
-        // TODO Auto-generated method stub
+    protected void saveRefreshToken(RefreshToken cxfRefreshToken) {
+        LOGGER.debug("Trying to save refresh token");
+        final OAuth2RefreshToken refreshToken = this.build(cxfRefreshToken);
+        final OAuth2Authentication authentication = this.tokenStore.readAuthenticationForRefreshToken(refreshToken);
+        this.tokenStore.storeRefreshToken(refreshToken, authentication);
+        LOGGER.debug("Successfully saved refresh token");
     }
 
     /*
@@ -133,8 +149,11 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
      * security.oauth2.common.ServerAccessToken)
      */
     @Override
-    protected void doRevokeAccessToken(ServerAccessToken accessToken) {
-        // TODO Auto-generated method stub
+    protected void doRevokeAccessToken(ServerAccessToken cxfAccessToken) {
+        LOGGER.debug("Trying to revoke access token");
+        final OAuth2AccessToken accessToken = this.build(cxfAccessToken);
+        this.tokenStore.removeAccessToken(accessToken);
+        LOGGER.debug("Successfully revoked access token");
     }
 
     /*
@@ -143,8 +162,11 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
      * security.oauth2.tokens.refresh.RefreshToken)
      */
     @Override
-    protected void doRevokeRefreshToken(RefreshToken refreshToken) {
-        // TODO Auto-generated method stub
+    protected void doRevokeRefreshToken(RefreshToken cxfRefreshToken) {
+        LOGGER.debug("Trying to revoke refresh token");
+        final OAuth2RefreshToken refreshToken = this.build(cxfRefreshToken);
+        this.tokenStore.removeRefreshToken(refreshToken);
+        LOGGER.debug("Successfully revoked refresh token");
     }
 
     /*
@@ -242,6 +264,30 @@ public class JwtOauthSpringSecurityProvider extends AbstractOAuthDataProvider {
         final RefreshToken cxfRefreshToken = new RefreshToken();
         // TODO Implement build logic
         return cxfRefreshToken;
+    }
+
+    /**
+     * Builds an {@link OAuth2AccessToken} instance with the data provided on a {@link ServerAccessToken} instance.
+     * 
+     * @param serverAccessToken
+     *            input data
+     * @return {@link OAuth2AccessToken} properly filled
+     */
+    private OAuth2AccessToken build(final ServerAccessToken serverAccessToken) {
+        // TODO Implement build logic
+        return null;
+    }
+
+    /**
+     * Builds an {@link OAuth2RefreshToken} instance with the data provided on a {@link RefreshToken} instance.
+     * 
+     * @param refreshToken
+     *            input data
+     * @return {@link OAuth2RefreshToken} properly filled
+     */
+    private OAuth2RefreshToken build(final RefreshToken refreshToken) {
+        // TODO Implement build logic
+        return null;
     }
 
     /**
