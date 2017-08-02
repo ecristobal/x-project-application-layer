@@ -4,28 +4,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.approval.ApprovalStore;
-import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
-import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler;
-import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
-/**
- * Spring bean configuration class.
- * 
- * @author Esteban Cristóbal
- */
 @Configuration
-@EnableWebSecurity
-public class SpringSecurityBeanConfiguration extends WebSecurityConfigurerAdapter {
+public class SpringSecurityBeanConfiguration {
 
     @Value("${token.validity.seconds}")
     private int tokenValidity;
@@ -34,25 +23,15 @@ public class SpringSecurityBeanConfiguration extends WebSecurityConfigurerAdapte
     private char[] keystorePassword;
 
     @Bean
+    public AuthorizationServerTokenServices tokenServices(final TokenStore tokenStore) {
+        final DefaultTokenServices tokenServices = new DefaultTokenServices();
+        tokenServices.setTokenStore(tokenStore);
+        return tokenServices;
+    }
+
+    @Bean
     public TokenStore tokenStore(final JwtAccessTokenConverter accessTokenConverter) {
         return new JwtTokenStore(accessTokenConverter);
-    }
-
-    @Bean
-    public TokenStoreUserApprovalHandler userApprovalHandler(final TokenStore tokenStore,
-            final ClientDetailsService clientDetailsService) {
-        final TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
-        handler.setTokenStore(tokenStore);
-        handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService));
-        handler.setClientDetailsService(clientDetailsService);
-        return handler;
-    }
-
-    @Bean
-    public ApprovalStore approvalStore(TokenStore tokenStore) {
-        TokenApprovalStore store = new TokenApprovalStore();
-        store.setTokenStore(tokenStore);
-        return store;
     }
 
     @Bean
@@ -64,14 +43,12 @@ public class SpringSecurityBeanConfiguration extends WebSecurityConfigurerAdapte
         return converter;
     }
 
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("esteban").password("e1234").roles("USER");
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // http.csrf().disable().anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
+    @Bean
+    public ClientDetailsService clientDetailsService() throws Exception {
+        final InMemoryClientDetailsServiceBuilder builder = new InMemoryClientDetailsServiceBuilder();
+        builder.inMemory().withClient("test").authorizedGrantTypes("authorization_code").authorities("ROLE_CLIENT")
+                .scopes("read", "trust").redirectUris("http://anywhere?key=value").secret("test");
+        return builder.build();
     }
 
 }
