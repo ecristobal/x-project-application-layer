@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -14,7 +15,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 @Configuration
-public class SpringSecurityBeanConfiguration {
+@EnableAuthorizationServer
+public class SpringSecurityBeanConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Value("${token.validity.seconds}")
     private int tokenValidity;
@@ -43,12 +45,18 @@ public class SpringSecurityBeanConfiguration {
         return converter;
     }
 
-    @Bean
-    public ClientDetailsService clientDetailsService() throws Exception {
-        final InMemoryClientDetailsServiceBuilder builder = new InMemoryClientDetailsServiceBuilder();
-        builder.inMemory().withClient("test").authorizedGrantTypes("authorization_code").authorities("ROLE_CLIENT")
-                .scopes("read", "trust").redirectUris("http://anywhere?key=value").secret("test");
-        return builder.build();
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        // TODO When data store is ready, change in-memory client data storage by the proper one
+        // @formatter:off
+        clients.inMemory()
+            .withClient("test")
+            .authorizedGrantTypes("client_credentials")
+            .authorities("ROLE_CLIENT")
+            .scopes("read", "trust")
+            .redirectUris("http://anywhere?key=value")
+            .secret("test");
+        // @formatter:on
     }
 
 }
