@@ -9,11 +9,6 @@
     <artifactId>generator-proxy</artifactId>
 
     <dependencies>
-        <!-- JMS dependencies -->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-client</artifactId>
-        </dependency>
         <!-- Apache CXF dependencies -->
         <dependency>
             <groupId>org.apache.cxf</groupId>

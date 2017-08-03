@@ -20,7 +20,7 @@ import com.x.project.application.layer.domain.api.ApiComponent;
  * @author Esteban Cristóbal
  */
 @Configuration
-public class DefaultApplicationServiceBeanConfiguration<T extends ApiComponent, V extends ApiComponent> {
+public abstract class DefaultApplicationServiceBeanConfiguration<T extends ApiComponent, V extends ApiComponent> {
 
     /**
      * @param businessDelegate

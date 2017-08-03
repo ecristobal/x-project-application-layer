@@ -9,5 +9,6 @@
   <packaging>pom</packaging>
   <modules>
       <module>generator-proxy</module>
+      <module>generator-endpoint</module>
   </modules>
 </project>
