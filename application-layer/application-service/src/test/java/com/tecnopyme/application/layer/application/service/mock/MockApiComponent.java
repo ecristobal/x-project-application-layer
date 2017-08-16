@@ -1,3 +1,6 @@
+/*******************************************************************************
+ * Copyright (c) 2017 TecnoPYME. All rights reserved
+ ******************************************************************************/
 package com.tecnopyme.application.layer.application.service.mock;
 
 import com.tecnopyme.application.layer.domain.api.ApiComponent;

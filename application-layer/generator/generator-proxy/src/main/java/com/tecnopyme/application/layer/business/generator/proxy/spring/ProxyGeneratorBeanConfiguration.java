@@ -1,3 +1,6 @@
+/*******************************************************************************
+ * Copyright (c) 2017 TecnoPYME. All rights reserved
+ ******************************************************************************/
 package com.tecnopyme.application.layer.business.generator.proxy.spring;
 
 import org.springframework.context.annotation.Bean;

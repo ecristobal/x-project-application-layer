@@ -1,3 +1,6 @@
+/*******************************************************************************
+ * Copyright (c) 2017 TecnoPYME. All rights reserved
+ ******************************************************************************/
 package com.tecnopyme.application.layer.chain.manager.spring;
 
 import org.springframework.context.annotation.Bean;
